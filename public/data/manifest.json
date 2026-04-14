@@ -3,18 +3,39 @@
     {
       "slug": "eden_bibas",
       "name": "Eden Bibas",
-      "lastUpdated": "2026-03-25T00:00:00.000Z",
+      "lastUpdated": "2026-04-14T10:10:57.367Z",
       "platforms": [
         "instagram",
-        "fb_personal",
-        "fb_group",
-        "linkedin",
-        "whatsapp",
-        "email",
-        "tiktok",
+        "facebook"
+      ],
+      "postCount": 1
+    },
+    {
+      "slug": "ruben_hassid",
+      "name": "Ruben Hassid",
+      "lastUpdated": "2026-04-14T10:10:57.367Z",
+      "platforms": [
+        "linkedin"
+      ],
+      "postCount": 19
+    },
+    {
+      "slug": "varun_mayya",
+      "name": "Varun Mayya",
+      "lastUpdated": "2026-04-14T10:10:57.368Z",
+      "platforms": [
+        "instagram"
+      ],
+      "postCount": 6
+    },
+    {
+      "slug": "jeff_su",
+      "name": "Jeff Su",
+      "lastUpdated": "2026-04-14T10:10:57.368Z",
+      "platforms": [
         "youtube"
       ],
-      "postCount": 1514
+      "postCount": 2
     }
   ]
 }
