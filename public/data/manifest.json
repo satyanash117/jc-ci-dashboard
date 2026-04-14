@@ -3,12 +3,18 @@
     {
       "slug": "eden_bibas",
       "name": "Eden Bibas",
-      "lastUpdated": "2026-04-14T10:10:57.367Z",
+      "lastUpdated": "2026-03-25T00:00:00.000Z",
       "platforms": [
         "instagram",
-        "facebook"
+        "fb_personal",
+        "fb_group",
+        "linkedin",
+        "whatsapp",
+        "email",
+        "tiktok",
+        "youtube"
       ],
-      "postCount": 1
+      "postCount": 1514
     },
     {
       "slug": "ruben_hassid",
