@@ -1,0 +1,131 @@
+{
+  "funnel": [
+    {
+      "id": "step1",
+      "label": "LinkedIn Content Feed",
+      "sublabel": "LinkedIn — 33 posts",
+      "color": "#38BDF8",
+      "desc": "Ruben Hassid operates entirely through LinkedIn organic content, publishing standalone value posts to build audience awareness. Every touchpoint begins and ends on LinkedIn, making it both the top-of-funnel and the primary distribution engine."
+    },
+    {
+      "id": "step2",
+      "label": "Standalone Value Posts",
+      "sublabel": "Educational AI content",
+      "color": "#34D399",
+      "desc": "Each post functions as an independent unit of value — typically AI tips, workflows, or insights — with no campaign arc tying them together. This positions Ruben as a thought leader and keeps followers returning without a structured nurture sequence."
+    },
+    {
+      "id": "step3",
+      "label": "Audience Trust Build",
+      "sublabel": "Reputation and authority layer",
+      "color": "#FBBF24",
+      "desc": "By consistently delivering actionable AI content without hard selling, Ruben builds high-trust authority on LinkedIn. Followers associate his name with practical AI expertise, which primes them for eventual conversion when offers are made."
+    },
+    {
+      "id": "step4",
+      "label": "Implicit Conversion",
+      "sublabel": "Profile, DMs, or undisclosed links",
+      "color": "#F97316",
+      "desc": "No tracked destination URLs or explicit CTAs appear in the dataset, suggesting conversion happens passively — through profile visits, inbound DMs, or off-platform word-of-mouth. The funnel bottom is invisible but likely driven by brand pull rather than direct response mechanics."
+    }
+  ],
+  "campaignIntel": {},
+  "campaignNames": {},
+  "campaignSells": {},
+  "opportunities": {
+    "channelGaps": [
+      {
+        "id": "cg_001",
+        "title": "Zero multi-channel presence",
+        "type": "channel",
+        "severity": "high",
+        "insight": "Ruben Hassid publishes exclusively on LinkedIn with 33 out of 33 posts on a single platform. There is no detected presence on YouTube, Instagram, X/Twitter, newsletters, or podcasts. This creates total dependency on the LinkedIn algorithm.",
+        "opportunity": "Eden Bibas can dominate channels Ruben ignores — particularly YouTube Shorts, Instagram Reels, or a newsletter — reaching AI-curious audiences who are not active LinkedIn users.",
+        "how": "Repurpose LinkedIn-style educational AI content into short-form video for YouTube Shorts and Instagram Reels, and build an email list that Ruben's audience never accesses.",
+        "evidence": []
+      },
+      {
+        "id": "cg_002",
+        "title": "No email or newsletter channel",
+        "type": "channel",
+        "severity": "high",
+        "insight": "There is no evidence of any newsletter, lead magnet, or email capture strategy in Ruben's data. His entire audience relationship exists inside LinkedIn, where he does not own the connection.",
+        "opportunity": "Eden Bibas can build a owned-audience asset that Ruben lacks entirely, creating a direct line to subscribers independent of any platform algorithm.",
+        "how": "Launch a weekly AI tips newsletter promoted via LinkedIn posts, using a free resource or checklist as the lead magnet to drive sign-ups from Ruben's same target audience.",
+        "evidence": []
+      },
+      {
+        "id": "cg_003",
+        "title": "No video-native platform presence",
+        "type": "channel",
+        "severity": "medium",
+        "insight": "All 33 posts are LinkedIn-native with no detected YouTube, TikTok, or Instagram video content. Video-native platforms reward discoverability through search and algorithm recommendation in ways LinkedIn does not.",
+        "opportunity": "Eden Bibas can capture search-driven discovery on YouTube by publishing AI tutorial videos that rank organically — a channel Ruben leaves completely open.",
+        "how": "Create 5-10 minute YouTube tutorials on the same AI topics Ruben covers in text, optimising for search terms like 'how to use ChatGPT for X' to pull in audiences Ruben cannot reach.",
+        "evidence": []
+      }
+    ],
+    "topicGaps": [
+      {
+        "id": "tg_001",
+        "title": "No structured learning or curriculum content",
+        "severity": "high",
+        "insight": "Ruben's 33 posts are all standalone, with no campaign or series detected. There is no structured curriculum, step-by-step course content preview, or progressive learning arc to guide followers from beginner to advanced.",
+        "opportunity": "Eden Bibas can publish a clearly sequenced content series — '30 days of AI skills' or 'Week 1: prompting basics' — giving audiences a reason to follow consistently rather than consuming one-off posts.",
+        "how": "Design a 4-6 week public learning series on LinkedIn or YouTube where each post explicitly builds on the last, tagging it as 'Part 2 of 6' to drive return engagement and series completion.",
+        "evidence": []
+      },
+      {
+        "id": "tg_002",
+        "title": "No personal story or case study content",
+        "severity": "medium",
+        "insight": "The dataset shows no campaign arcs built around personal transformation stories, client results, or before-and-after case studies. Ruben's content appears to be purely informational without narrative hooks rooted in real outcomes.",
+        "opportunity": "Eden Bibas can differentiate by publishing specific client or personal case studies with measurable outcomes — 'how I saved 10 hours a week using this AI workflow' — which build emotional resonance alongside credibility.",
+        "how": "Document one real AI implementation story per month with specific metrics, publishing it as a LinkedIn carousel or short video that contrasts life before and after the AI solution.",
+        "evidence": []
+      },
+      {
+        "id": "tg_003",
+        "title": "No community or audience participation content",
+        "severity": "medium",
+        "insight": "There is no evidence of polls, challenges, Q&A posts, or community-building content in Ruben's strategy. All 33 posts appear to be broadcast-style with no mechanism for audience co-creation or participation.",
+        "opportunity": "Eden Bibas can build stronger audience loyalty by creating participatory content — weekly AI challenges, open questions, or 'submit your workflow for a teardown' series — that makes followers feel like contributors.",
+        "how": "Run a monthly 'AI challenge' post where followers share their results in comments, then feature the best responses in a follow-up post to incentivise participation and boost reach.",
+        "evidence": []
+      },
+      {
+        "id": "tg_004",
+        "title": "No visible product or offer content",
+        "severity": "low",
+        "insight": "With no top destinations detected across 33 posts, Ruben appears to avoid direct promotional content entirely. There is no detected course launch, service offer, or product announcement in the dataset.",
+        "opportunity": "Eden Bibas can be more transparent about products and services without losing credibility — audiences often respect clarity about what someone sells when trust is already established through value content.",
+        "how": "Introduce a monthly 'what I offer' post framed as a resource guide — not a hard sell — that naturally surfaces services and converts warm followers who are already engaged with the content.",
+        "evidence": []
+      }
+    ],
+    "structuralGaps": [
+      {
+        "id": "sg_001",
+        "title": "No campaign architecture or launch sequencing",
+        "insight": "Every one of Ruben's 33 posts is standalone with zero campaign structures detected. There is no teaser-to-launch arc, no urgency mechanics, and no coordinated multi-post narrative driving toward a specific conversion event.",
+        "opportunity": "Eden Bibas can deploy structured campaign arcs — even simple 4-post sequences — that build momentum, create anticipation, and drive measurable conversion spikes that Ruben's flat content calendar cannot produce."
+      },
+      {
+        "id": "sg_002",
+        "title": "Single-platform dependency creates fragility",
+        "insight": "With a 100% LinkedIn concentration, any algorithm change, account restriction, or platform decline would eliminate Ruben's entire audience reach overnight. There is no redundancy, no owned channel, and no cross-platform safety net in the data.",
+        "opportunity": "Eden Bibas can build a more resilient content infrastructure across two or three platforms plus an email list, meaning audience relationships survive any single platform disruption and compound across channels simultaneously."
+      },
+      {
+        "id": "sg_003",
+        "title": "No tracked or visible conversion funnel",
+        "insight": "The absence of any top destination data across 33 posts means there is no visible CTA strategy, no tracked link clicks, and no measurable funnel from content to revenue. Conversion, if it happens at all, is entirely passive and unmeasured.",
+        "opportunity": "Eden Bibas can gain a significant advantage by building a transparent and tracked funnel — even a simple link-in-bio flow with a freebie to email list to offer — creating measurable ROI from content that Ruben's strategy currently cannot demonstrate."
+      }
+    ]
+  },
+  "generatedAt": "2026-04-15T08:52:07.609Z",
+  "_postCount": 33,
+  "_competitor": "ruben_hassid",
+  "_regenReason": "first run"
+}
