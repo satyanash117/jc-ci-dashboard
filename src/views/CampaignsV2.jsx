@@ -117,6 +117,60 @@ const EDEN_CAMPAIGN_INTEL = {
   },
 }
 
+// Generates a data-driven campaign description when no AI intel is available
+function buildCampaignFallbackDesc(campaign) {
+  const { posts, channels, durationDays, dateMin, dateMax } = campaign
+  if (!posts?.length) return <span style={{ color: 'var(--tm)', fontStyle: 'italic' }}>No post data available.</span>
+
+  const dateRange = dateMin && dateMax
+    ? `${dateMin.toISOString().slice(0,10)} → ${dateMax.toISOString().slice(0,10)}`
+    : null
+
+  // Sell vs value
+  const sellPosts = posts.filter(p => p.intent === 'SOFT-SELL' || p.intent === 'HARD-SELL')
+  const givePosts = posts.filter(p => p.intent === 'GIVE-VALUE')
+  const sellPct   = Math.round(sellPosts.length / posts.length * 100)
+
+  // Destinations
+  const destCounts = {}
+  for (const p of posts) {
+    const d = p.dest_ultimate
+    if (d && d !== 'Awareness only' && d !== 'NONE' && d !== 'False' && d.trim())
+      destCounts[d] = (destCounts[d] || 0) + 1
+  }
+  const topDest = Object.entries(destCounts).sort((a, b) => b[1] - a[1])[0]
+
+  // CTA methods
+  const ctaCounts = {}
+  for (const p of posts) { const k = p.cta_method; if (k && k !== 'NONE' && k !== 'False') ctaCounts[k] = (ctaCounts[k] || 0) + 1 }
+  const topCta = Object.entries(ctaCounts).sort((a, b) => b[1] - a[1])[0]
+  const CTA_PLAIN = {
+    'COMMENT-KEYWORD':    'comment-keyword automation (followers comment a word → receive link via DM)',
+    'COMMENT-TO-RECEIVE': 'comment-to-receive (followers comment → manually sent the link)',
+    'LINK-IN-POST':       'direct link in the post',
+    'LINK-IN-COMMENT':    'link placed in the first comment',
+    'WHATSAPP-JOIN':      'WhatsApp group join link',
+  }
+
+  // Sample hooks
+  const hooks = posts.map(p => p.hook_text_english || p.hook_text_hebrew || '').filter(Boolean).slice(0, 2)
+
+  // Sequence positions
+  const seqCounts = {}
+  for (const p of posts) { const s = p.sequence_position; if (s && s !== 'STANDALONE') seqCounts[s] = (seqCounts[s] || 0) + 1 }
+  const seqSummary = Object.keys(seqCounts).join(' → ')
+
+  const parts = []
+  parts.push(`${posts.length}-post campaign across ${channels.length === 1 ? channels[0] : channels.join(', ')}${dateRange ? `, running ${dateRange}` : ''}${durationDays ? ` (${durationDays} days)` : ''}.`)
+  if (topDest) parts.push(`Driving to: ${topDest[0]}${topDest[1] > 1 ? ` — ${topDest[1]} posts point here` : ''}.`)
+  if (topCta)  parts.push(`Primary mechanic: ${CTA_PLAIN[topCta[0]] || topCta[0]} (${topCta[1]} of ${posts.length} posts).`)
+  if (sellPct > 0) parts.push(`Content mix: ${100 - sellPct}% value, ${sellPct}% selling.`)
+  if (seqSummary) parts.push(`Sequence arc: ${seqSummary}.`)
+  if (hooks.length) parts.push(`Sample opening lines: "${hooks[0]}"${hooks[1] ? ` / "${hooks[1]}"` : ''}.`)
+
+  return <span>{parts.join(' ')}</span>
+}
+
 const CAMP_SORT_OPTIONS = [
   { id: 'posts', label: 'Post Count' },
   { id: 'avg', label: 'Avg Comments' },
@@ -236,11 +290,7 @@ export default function ViewCampaigns({ posts, paidAds = [], competitor, aiSumma
 
           <div style={{ padding: '16px 20px', background: 'linear-gradient(135deg,#111827 0%,#0D1320 100%)', border: '1px solid var(--bd)', borderRadius: 10, borderLeft: '4px solid var(--ac)' }}>
             <div style={{ fontSize: 16, color: 'var(--tp)', lineHeight: 1.7 }}>
-              {selected.intel?.description ?? (
-                <span style={{ color: 'var(--tm)', fontStyle: 'italic' }}>
-                  AI campaign analysis will be generated on the next scheduled scrape.
-                </span>
-              )}
+              {selected.intel?.description ?? buildCampaignFallbackDesc(selected)}
             </div>
           </div>
 

@@ -39,7 +39,7 @@ function mapToOrganicPost(raw, competitorSlug, platform, idx) {
 
     // Author (scrapers may not capture this for non-Eden competitors)
     post_author:        raw.author || raw.username || competitorSlug,
-    post_author_is_eden:'NO',
+    post_author_is_eden: 'YES', // scrapers only capture the competitor's own posts
 
     // Content
     hook_text_english:  raw.hook_text_english || hook,
@@ -117,15 +117,60 @@ function exportToDashboard(jobResults, classifiedPosts, config) {
       try { existing = JSON.parse(fs.readFileSync(existingPath, 'utf8')) } catch {}
     }
 
-    // Deduplicate by post_url or id
-    const existingKeys = new Set(existing.map(p => p.post_url || p.id).filter(Boolean))
-    const fresh = newPosts.filter(p => {
+    // Classification fields — always overwrite these on existing posts when we
+    // have a freshly-classified version (fixes the "dedup skips reclassification" bug)
+    const CLASSIFICATION_FIELDS = [
+      'hook_type', 'intent', 'cta_method', 'campaign_id',
+      'dest_ultimate', 'dest_immediate', 'sequence_position',
+      'hook_text_english', 'body_summary_english',
+    ]
+
+    // Build lookup: key → index in existing array
+    const existingIdx = new Map()
+    existing.forEach((p, i) => {
       const key = p.post_url || p.id
-      return !key || !existingKeys.has(key)
+      if (key) existingIdx.set(key, i)
     })
 
-    if (!fresh.length) {
-      console.log(`[Exporter] No new posts for ${name} (all already exist)`)
+    const fresh = []
+    let updated = 0
+
+    for (const p of newPosts) {
+      const key = p.post_url || p.id
+      if (key && existingIdx.has(key)) {
+        // Post already exported — update classification fields if they improved
+        const i = existingIdx.get(key)
+        let changed = false
+        for (const f of CLASSIFICATION_FIELDS) {
+          const incoming = p[f]
+          const current  = existing[i][f]
+          // Update if incoming value is non-default and better than what's stored
+          const isDefaultHookType = !incoming || incoming === 'OTHER'
+          const isDefaultCampaign = !incoming || incoming === 'STANDALONE'
+          const isDefaultIntent   = !incoming || incoming === 'GIVE-VALUE'
+          const isDefaultCta      = !incoming || incoming === 'NONE'
+          const isEmptyStr        = typeof incoming === 'string' && incoming.trim() === ''
+          const isDefaultDest     = !incoming || incoming === 'Awareness only'
+          const isDefault = (f === 'hook_type' && isDefaultHookType) ||
+                            (f === 'campaign_id' && isDefaultCampaign) ||
+                            (f === 'intent' && isDefaultIntent) ||
+                            (f === 'cta_method' && isDefaultCta) ||
+                            (['hook_text_english','body_summary_english','dest_immediate'].includes(f) && isEmptyStr) ||
+                            (['dest_ultimate','sequence_position'].includes(f) && isDefaultDest)
+          if (!isDefault && current !== incoming) {
+            existing[i][f] = incoming
+            changed = true
+          }
+        }
+        if (changed) updated++
+      } else {
+        // Genuinely new post
+        fresh.push(p)
+      }
+    }
+
+    if (!fresh.length && updated === 0) {
+      console.log(`[Exporter] No new posts for ${name} (all already exist, no classification updates)`)
       continue
     }
 
@@ -146,8 +191,8 @@ function exportToDashboard(jobResults, classifiedPosts, config) {
       }
     }
 
-    console.log(`[Exporter] ${name}: +${fresh.length} new posts (${merged.length} total) → ${outDir}`)
-    exported.push({ slug, name, postCount: merged.length, newCount: fresh.length })
+    console.log(`[Exporter] ${name}: +${fresh.length} new, ${updated} reclassified (${merged.length} total) → ${outDir}`)
+    exported.push({ slug, name, postCount: merged.length, newCount: fresh.length, updatedCount: updated })
   }
 
   return exported
@@ -160,20 +205,33 @@ function exportToDashboard(jobResults, classifiedPosts, config) {
 function preparePostsForExport(jobResults, config, classifiedPosts) {
   const flat = []
 
+  // Build a URL-based lookup for classified posts.
+  // Scrapers use different field names: url, post_url, link — check all three.
+  const classifiedByUrl = new Map()
+  for (const cp of classifiedPosts) {
+    const key = cp.post_url || cp.url || cp.link
+    if (key) classifiedByUrl.set(key, cp)
+  }
+
   for (const competitor of (config.competitors || [])) {
     const name = competitor.name
     const slug = toSlug(name)
     const competitorResults = jobResults.results?.[name] || {}
 
+    // Build a per-competitor indexed lookup as fallback for posts without URLs
+    const competitorClassified = classifiedPosts.filter(
+      cp => cp._competitorSlug === slug || cp._competitorName === name
+    )
+
     let idx = 0
     for (const [platform, platformData] of Object.entries(competitorResults)) {
       const rawPosts = platformData.posts || []
       for (const raw of rawPosts) {
-        // Find matching classified post (by index or URL)
-        const classified = classifiedPosts.find(cp =>
-          (cp._originalIndex === idx) ||
-          (cp.post_url && cp.post_url === (raw.post_url || raw.url))
-        ) || {}
+        // Match by URL first (most reliable), then by position within competitor slice
+        const rawUrl = raw.post_url || raw.url || raw.link
+        const classified = (rawUrl && classifiedByUrl.get(rawUrl)) ||
+                           competitorClassified[idx] ||
+                           {}
 
         flat.push({
           ...mapToOrganicPost(raw, slug, platform, idx),
