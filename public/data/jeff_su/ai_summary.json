@@ -1,0 +1,184 @@
+{
+  "funnel": [
+    {
+      "id": "step1",
+      "label": "YouTube Discovery",
+      "sublabel": "YouTube (13 posts)",
+      "color": "#F43F5E",
+      "desc": "Jeff Su operates exclusively on YouTube, using it as his sole awareness channel. All 13 posts are published here, making YouTube the single entry point for his entire audience funnel. Hook types like VALUE-OFFER, CONTRARIAN, and HOW-TO are used to capture search-driven and algorithmic discovery traffic."
+    },
+    {
+      "id": "step2",
+      "label": "Hook-Driven Engagement",
+      "sublabel": "Value, Contrarian & How-To hooks",
+      "color": "#FBBF24",
+      "desc": "Jeff uses a mix of VALUE-OFFER, CONTRARIAN, and HOW-TO hooks to pull viewers deeper into content. Sample hooks like 'Grab my free AI Toolkit' and 'The trick is figuring out what matters without reading everything' signal a problem-aware audience being primed for a specific tool or workflow solution. This phase builds trust and positions Jeff as a practical AI productivity guide."
+    },
+    {
+      "id": "step3",
+      "label": "In-Post CTA Click",
+      "sublabel": "Link-in-post (6 posts)",
+      "color": "#38BDF8",
+      "desc": "The primary conversion mechanic is a link placed directly in the post description, used in 6 of 13 posts. This drives viewers off-platform to landing pages, toolkits, or third-party guides. The remaining posts use no explicit CTA, suggesting some videos serve purely as brand/content value without a hard ask."
+    },
+    {
+      "id": "step4",
+      "label": "Lead Magnet Bridge",
+      "sublabel": "Free AI Toolkit page",
+      "color": "#A78BFA",
+      "desc": "Jeff uses a free AI Toolkit as a mid-funnel lead magnet to bridge YouTube viewers into his ecosystem before asking for tool adoption. This is prominently featured in the ClaudeCowork campaign, where the toolkit page acts as a soft conversion step before the harder ask of adopting Claude Cowork."
+    },
+    {
+      "id": "step5",
+      "label": "Tool/Platform Adoption",
+      "sublabel": "Claude Cowork, NotebookLM, Gamma, Coursera",
+      "color": "#34D399",
+      "desc": "The ultimate destination across Jeff's posts is tool or platform adoption, spanning Claude Cowork (2 posts), NotebookLM (2 posts), Gamma (1 post), and Coursera (1 post). This suggests an affiliate or partnership-driven monetization model where Jeff earns by driving adoption of specific AI tools. The breadth of destinations indicates he tests multiple tools simultaneously rather than committing to a single product."
+    }
+  ],
+  "campaignIntel": {
+    "CAMP-ClaudeCowork-Mar26": {
+      "title": "Claude Cowork AI Toolkit Launch (March–April 2026)",
+      "description": "This campaign promoted Claude Cowork adoption through a two-beat arc beginning with a LAUNCH post and followed by VALUE reinforcement. The LAUNCH phase introduced the free AI Toolkit as a low-friction entry point, with a direct link-in-post CTA driving to the toolkit page, which then funneled into Claude Cowork adoption. The VALUE beat followed up with content reinforcing Claude Cowork's utility, using no explicit CTA — suggesting a nurture-style post designed to deepen conviction in already-engaged viewers.",
+      "sells": "Claude Cowork adoption (with Free AI Toolkit as lead magnet bridge)",
+      "arc": [
+        {
+          "beat": "LAUNCH",
+          "color": "#F43F5E",
+          "desc": "1 post launched the campaign with the hook 'Grab my free AI Toolkit,' driving clicks via a link-in-post CTA to the AI Toolkit page as a gateway into Claude Cowork adoption."
+        },
+        {
+          "beat": "VALUE",
+          "color": "#34D399",
+          "desc": "2 posts reinforced the Claude Cowork value proposition with no hard CTA, functioning as trust-building and retention content for viewers already in the funnel."
+        }
+      ]
+    },
+    "CAMP-NotebookLM-Mar26": {
+      "title": "NotebookLM Productivity Series (March 2026)",
+      "description": "This campaign ran across 11 days and promoted NotebookLM as a research and summarisation tool, with a HubSpot-branded guide as the conversion destination for at least one post. The arc moved from VALUE content to a formal LAUNCH to a TEASER, suggesting a reverse-conventional sequence where audience trust was built first before the tool was formally introduced and then teased for follow-on content. The CTA mechanic split between a direct link to the HubSpot NotebookLM guide and posts with no CTA.",
+      "sells": "NotebookLM usage adoption and HubSpot NotebookLM guide download",
+      "arc": [
+        {
+          "beat": "VALUE",
+          "color": "#38BDF8",
+          "desc": "1 post led with a VALUE hook ('The trick is figuring out what matters without reading everything'), establishing the pain point of information overload and positioning NotebookLM as the solution with no CTA."
+        },
+        {
+          "beat": "LAUNCH",
+          "color": "#F43F5E",
+          "desc": "1 post formally launched the NotebookLM content push, driving viewers via a link-in-post CTA to the HubSpot-branded NotebookLM guide, indicating a sponsored or affiliate arrangement."
+        },
+        {
+          "beat": "TEASER",
+          "color": "#FBBF24",
+          "desc": "1 post closed the campaign arc with a TEASER beat, likely previewing additional NotebookLM content or a follow-up use case to maintain audience engagement and extend the campaign lifecycle."
+        }
+      ]
+    }
+  },
+  "campaignNames": {
+    "CAMP-ClaudeCowork-Mar26": "Claude Cowork AI Toolkit Launch (March–April 2026)",
+    "CAMP-NotebookLM-Mar26": "NotebookLM Productivity Series (March 2026)"
+  },
+  "campaignSells": {
+    "CAMP-ClaudeCowork-Mar26": "Claude Cowork adoption, with Free AI Toolkit as lead magnet",
+    "CAMP-NotebookLM-Mar26": "NotebookLM usage adoption and HubSpot NotebookLM guide"
+  },
+  "opportunities": {
+    "channelGaps": [
+      {
+        "id": "cg_001",
+        "title": "Zero presence on short-form platforms",
+        "type": "channel",
+        "severity": "high",
+        "insight": "Jeff Su publishes exclusively on YouTube with 13 long-form posts and zero presence on LinkedIn, X/Twitter, Instagram Reels, or TikTok. His entire distribution strategy depends on YouTube's algorithm and search, leaving short-form audiences completely unaddressed.",
+        "opportunity": "Eden Bibas can capture the AI productivity audience that consumes content on LinkedIn and TikTok — audiences that overlap heavily with Jeff's but are not being served by him at all.",
+        "how": "Publish short-form clips (60–90 seconds) on LinkedIn and TikTok repurposing AI tool tips, positioning Eden as the go-to voice for AI productivity across platforms Jeff ignores.",
+        "evidence": []
+      },
+      {
+        "id": "cg_002",
+        "title": "No email or newsletter channel detected",
+        "type": "channel",
+        "severity": "high",
+        "insight": "Despite using a free AI Toolkit as a lead magnet, there is no detected newsletter or email channel in Jeff's strategy. His audience relationship is entirely platform-dependent, meaning algorithm changes or demotion could sever his connection to followers instantly.",
+        "opportunity": "Eden Bibas can build a owned-channel moat by pairing content with an email list or newsletter, creating a direct relationship with followers that Jeff's audience does not have with him.",
+        "how": "Gate a high-value AI resource behind an email opt-in and promote it consistently across posts, building a list that compounds over time and reduces platform dependency.",
+        "evidence": []
+      },
+      {
+        "id": "cg_003",
+        "title": "No community or Discord/Slack channel",
+        "type": "channel",
+        "severity": "medium",
+        "insight": "Jeff's funnel moves viewers from YouTube directly to third-party tool adoption pages, with no intermediate community layer detected. There is no evidence of a Discord, Slack, Circle, or Skool community where his audience gathers and engages peer-to-peer.",
+        "opportunity": "Eden Bibas can build a community layer that deepens audience loyalty, creates network effects, and generates recurring engagement — a structural asset Jeff lacks entirely.",
+        "how": "Launch a free AI productivity community (Discord or Skool) promoted in YouTube descriptions and posts, using it as a CTA destination that builds long-term retention rather than one-time clicks.",
+        "evidence": []
+      }
+    ],
+    "topicGaps": [
+      {
+        "id": "tg_001",
+        "title": "No personal brand or behind-the-scenes content",
+        "severity": "medium",
+        "insight": "All detected content from Jeff Su is tool-focused and tactical — promoting specific AI tools like Claude Cowork, NotebookLM, and Gamma. There is no evidence of personal storytelling, behind-the-scenes workflow content, or audience-facing narrative building.",
+        "opportunity": "Eden Bibas can differentiate by layering personal brand content — sharing their own AI workflow, failures, and learning moments — creating emotional resonance that tool-focused creators like Jeff cannot easily replicate.",
+        "how": "Publish one personal-narrative post per week alongside tactical content, documenting Eden's own journey with AI tools to build parasocial connection and trust.",
+        "evidence": []
+      },
+      {
+        "id": "tg_002",
+        "title": "No audience-specific vertical targeting",
+        "severity": "high",
+        "insight": "Jeff's tool promotions span a wide range — productivity AI (Claude Cowork), research AI (NotebookLM), presentations (Gamma), and online learning (Coursera) — suggesting a broad generalist positioning rather than serving a specific professional vertical like marketers, founders, or students.",
+        "opportunity": "Eden Bibas can own a specific vertical — for example, AI tools for solopreneurs, or AI for marketing teams — and become the definitive voice for that segment, where Jeff has no focused presence.",
+        "how": "Define a primary audience persona and produce a content series explicitly for that group, using language and examples that make the content feel tailor-made rather than broadly applicable.",
+        "evidence": []
+      },
+      {
+        "id": "tg_003",
+        "title": "No original research or data-led content",
+        "severity": "medium",
+        "insight": "Jeff's hook types (VALUE-OFFER, CONTRARIAN, HOW-TO, NEWS-BREAK) are all reactive or instructional in nature. There is no evidence of original surveys, experiments, or data-led content that would position him as a primary source rather than a secondary commentator.",
+        "opportunity": "Eden Bibas can publish original findings — such as testing 10 AI tools head-to-head or surveying professionals on AI adoption — to generate earned media, backlinks, and first-mover authority.",
+        "how": "Run a monthly AI tool experiment or mini-survey and publish the results as a data-led post, establishing Eden as a credible primary source in the AI productivity conversation.",
+        "evidence": []
+      },
+      {
+        "id": "tg_004",
+        "title": "No content around AI skepticism or limitations",
+        "severity": "low",
+        "insight": "Jeff's CONTRARIAN hook type appears only twice, and the overall content posture appears pro-AI-tool adoption given every destination is a tool or course. There is no detected content addressing AI limitations, failure cases, or when NOT to use a particular tool.",
+        "opportunity": "Eden Bibas can build credibility and audience trust by publishing balanced content that acknowledges AI tool limitations, positioning Eden as an honest analyst rather than an affiliate promoter.",
+        "how": "Produce a 'When NOT to use [tool]' or 'I tested this AI tool and here's what failed' post to attract skeptical audiences and differentiate from purely promotional competitors like Jeff.",
+        "evidence": []
+      }
+    ],
+    "structuralGaps": [
+      {
+        "id": "sg_001",
+        "title": "Single-destination campaigns limit monetisation diversity",
+        "insight": "Each of Jeff's campaigns drives to a single tool or destination per arc, meaning if an affiliate deal ends or a tool loses relevance, the entire campaign loses its conversion purpose. His monetisation appears heavily dependent on third-party affiliate arrangements with specific tools.",
+        "opportunity": "Eden Bibas can build campaigns with multiple monetisation layers — combining an owned product (course, template) with an affiliate tool recommendation — so that revenue is resilient even if one partnership changes."
+      },
+      {
+        "id": "sg_002",
+        "title": "No urgency or scarcity mechanics detected",
+        "insight": "Across all 13 posts and both campaigns, no URGENCY sequence beat was identified. Jeff does not appear to use time-limited offers, waitlists, or scarcity framing to accelerate conversions — the funnel relies entirely on VALUE and LAUNCH mechanics.",
+        "opportunity": "Eden Bibas can implement urgency mechanics — limited cohort enrollments, time-sensitive bonuses, or waitlists — to drive faster conversion decisions from an audience already primed to act."
+      },
+      {
+        "id": "sg_003",
+        "title": "Inconsistent CTA application across posts",
+        "insight": "Only 6 of 13 posts use a LINK-IN-POST CTA, meaning nearly half of Jeff's content drives no measurable off-platform action. Several posts in both campaigns use 'No CTA' as their mechanic, suggesting missed conversion opportunities within active campaign arcs.",
+        "opportunity": "Eden Bibas can gain a structural conversion edge by ensuring every post has a clear, contextually appropriate CTA — even soft ones like 'save this post' or 'comment your answer' — to maximise the conversion yield from every piece of content published."
+      }
+    ]
+  },
+  "generatedAt": "2026-04-15T09:14:13.587Z",
+  "_postCount": 13,
+  "_competitor": "jeff_su",
+  "_regenReason": "first run"
+}
