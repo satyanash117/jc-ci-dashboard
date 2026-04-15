@@ -1,0 +1,419 @@
+{
+  "funnel": [
+    {
+      "id": "step1",
+      "label": "Awareness Content",
+      "sublabel": "Facebook Personal, Facebook Group, LinkedIn",
+      "color": "#38BDF8",
+      "desc": "Eden leads with high-volume curiosity-gap and news-break hooks (515 combined posts) across fb_personal and fb_group to capture attention in the AI space. Content is primarily educational and topical, tied to breaking AI developments. This step drives mass organic reach without an immediate commercial ask."
+    },
+    {
+      "id": "step2",
+      "label": "Engagement & Community",
+      "sublabel": "Facebook Group, Instagram, Threads",
+      "color": "#34D399",
+      "desc": "Engaged followers are pulled into conversation via COMMENT-TO-RECEIVE and COMMENT-KEYWORD CTAs (266 combined uses), creating two-way interaction that boosts algorithmic reach. Personal-story hooks (214 posts) build parasocial trust at this stage. The goal is to warm cold audiences into an active community before any WhatsApp funnel entry."
+    },
+    {
+      "id": "step3",
+      "label": "WhatsApp Free Lead",
+      "sublabel": "WA Free → Brainers Club (298 posts)",
+      "color": "#FBBF24",
+      "desc": "A significant share of content (298 posts) drives users into a free WhatsApp community as the primary lead-capture mechanism. PDF guides, AI tool roundups, and challenge recordings are delivered via WhatsApp DM, creating a low-friction entry point. This step functions as the email-list equivalent, building a warm, owned audience outside social platforms."
+    },
+    {
+      "id": "step4",
+      "label": "Authority & Nurture",
+      "sublabel": "LinkedIn, YouTube, Email",
+      "color": "#A78BFA",
+      "desc": "LinkedIn (291 posts) and YouTube (25 posts) serve a dual role: credibility-building for enterprise/professional audiences and long-form nurture content that deepens trust. YouTube series and AI news recaps position Eden as a go-to AI expert. This mid-funnel layer supports both direct conversion and ongoing retention of existing members."
+    },
+    {
+      "id": "step5",
+      "label": "Brainers Club / AI Life Conversion",
+      "sublabel": "Paid membership & course purchase (420 posts combined)",
+      "color": "#F43F5E",
+      "desc": "The primary monetisation destination is the Brainers Club / AI Life membership (344 posts driving here) with a secondary hard-sell to course purchases (76 posts). Campaigns use structured urgency arcs — launch pricing, countdown timers, and social proof — to convert warmed WhatsApp and community audiences. LINK-IN-COMMENT (350 posts) is the dominant conversion CTA method to avoid platform reach suppression."
+    }
+  ],
+  "campaignIntel": {
+    "NONE": {
+      "title": "Always-On Content Engine (Ongoing)",
+      "description": "This is Eden's evergreen content operation running continuously from January 2023 through March 2026, accounting for 819 posts across every major channel. It serves as the top-of-funnel awareness engine, rotating through acquisition, authority-building, community-building, and conversion beats without a fixed campaign arc. CTA mechanics mix comments engagement for reach amplification with occasional Manus AI guide drops to capture leads.",
+      "sells": "Brainers Club / AI Life membership (primary) with no-destination brand building as a secondary objective",
+      "arc": [
+        {
+          "beat": "TOFU / AWARENESS",
+          "color": "#38BDF8",
+          "desc": "High-volume news-break and curiosity-gap posts publish daily to seed brand awareness and drive algorithmic reach across Facebook and LinkedIn. No hard commercial ask is made in these posts."
+        },
+        {
+          "beat": "AUTHORITY-BUILDING",
+          "color": "#A78BFA",
+          "desc": "Expert positioning posts — including AI tool breakdowns, challenge recaps, and professional workshop mentions — build credibility that pre-sells the paid membership. These appear consistently between promotional bursts."
+        },
+        {
+          "beat": "COMMUNITY-BUILDING",
+          "color": "#34D399",
+          "desc": "Community takeover posts, engagement prompts, and COMMENT-KEYWORD CTAs deepen group participation and funnel members toward the WhatsApp community entry point."
+        },
+        {
+          "beat": "CONVERSION / BOFU",
+          "color": "#F43F5E",
+          "desc": "Periodic hard-sell and demand-test posts are inserted into the always-on stream, directing warm audiences directly to Brainers Club or AI Life purchase pages, often timed with external AI news cycles."
+        },
+        {
+          "beat": "RECYCLE",
+          "color": "#FBBF24",
+          "desc": "Evergreen posts and repurposed content are recycled into the feed to maintain posting cadence without new content production, particularly on lower-effort days."
+        }
+      ]
+    },
+    "CAMP-Brainstorm-Oct25": {
+      "title": "Brainstorm Event Launch — October 2025",
+      "description": "A 34-post campaign spanning from September 2024 through October 2025 promoting a live Brainstorm event, structured around a clear pre-event warm-up, live event promotion, and post-event recap arc. The campaign used a soft-to-hard sell progression across LinkedIn, Facebook Personal, Instagram, and Facebook Group. CTAs were primarily community engagement with no direct link, relying on organic conversation to drive registrations.",
+      "sells": "Awareness Only (brand event) feeding into Brainers Club / AI Life membership",
+      "arc": [
+        {
+          "beat": "WARM-UP / WARM-UP-1 / WARM-UP-2",
+          "color": "#38BDF8",
+          "desc": "Early teaser posts built anticipation for the Brainstorm event, seeding curiosity without revealing full details. Multiple warm-up beats suggest a phased pre-event drip over several weeks."
+        },
+        {
+          "beat": "PRE-EVENT-EVE",
+          "color": "#FBBF24",
+          "desc": "A final urgency push published the day before the event to drive last-minute registrations and attendance commitments from warm audiences across Facebook and LinkedIn."
+        },
+        {
+          "beat": "STARTING-NOW",
+          "color": "#F97316",
+          "desc": "A real-time launch post announced the event going live, creating FOMO and pulling in any remaining undecided followers into the session."
+        },
+        {
+          "beat": "SOFT-SELL-1 / HARD-SELL / HARD-SELL-1",
+          "color": "#F43F5E",
+          "desc": "Post-event sell posts converted attendee momentum into Brainers Club or AI Life memberships, with escalating urgency from soft to hard sell across multiple posts."
+        },
+        {
+          "beat": "RECAP / POST-EVENT-TEASER",
+          "color": "#34D399",
+          "desc": "Recap content extended the campaign's organic life, summarising event highlights and teasing future events to retain engaged followers and seed the next campaign cycle."
+        }
+      ]
+    },
+    "CAMP-Claude-Code-Mar26": {
+      "title": "Claude Code Tool Launch — March 2026",
+      "description": "A 21-post campaign launching around the Claude Code AI tool, running from February to March 2026 across Instagram, LinkedIn, Facebook, WhatsApp, and email. The campaign followed a numbered sequence arc (1 of 4 through 4 of 4) suggesting a structured multi-part content series, supported by social proof drops and urgency closes. The primary CTA was a PDF/guide delivered via DM, funnelling leads into WhatsApp and then toward Brainers Club.",
+      "sells": "WA Free → Brainers Club (primary) / Awareness Only (secondary)",
+      "arc": [
+        {
+          "beat": "WARM-UP",
+          "color": "#38BDF8",
+          "desc": "Early posts introduced the Claude Code topic and built anticipation before the formal content series launched, using the recurring hook 'The world of AI is changing at a dizzying pace.'"
+        },
+        {
+          "beat": "ANNOUNCEMENT",
+          "color": "#FBBF24",
+          "desc": "A formal campaign announcement post signalled the start of the structured series and directed audiences to watch for the numbered content drops."
+        },
+        {
+          "beat": "1 of 4 / 2 of 4 / 3 of 4 / 4 of 4",
+          "color": "#A78BFA",
+          "desc": "Four serialised content posts delivered step-by-step Claude Code education, each with a PDF/guide DM CTA to capture leads into WhatsApp before the final conversion push."
+        },
+        {
+          "beat": "SOCIAL-PROOF / SOCIAL-PROOF-1",
+          "color": "#34D399",
+          "desc": "Social proof posts featuring results, testimonials, or community reactions were inserted mid-campaign to validate the tool and reduce purchase hesitation."
+        },
+        {
+          "beat": "URGENCY",
+          "color": "#F43F5E",
+          "desc": "A closing urgency post drove final conversions into Brainers Club, using time-limited framing to push fence-sitters to act before the campaign window closed."
+        },
+        {
+          "beat": "RECAP / LAUNCH",
+          "color": "#F97316",
+          "desc": "A recap post closed the campaign loop, summarising key Claude Code insights and relaunching awareness for audiences who missed the initial series."
+        }
+      ]
+    },
+    "CAMP-LEARN-AI-CHALLENGE-May25": {
+      "title": "Learn AI Challenge — May 2025",
+      "description": "A 10-post Facebook Personal campaign running May to June 2025, built around a structured AI learning challenge with recordings delivered via WhatsApp group. The campaign used a warm-up to sell progression with a distinctive 1 NIS first-month offer on AI Life Club paired with a Prompt Booklet as the conversion incentive. The challenge format served as both a lead generation mechanism and a demonstration of product value.",
+      "sells": "WA Free → Brainers Club / AI Life Club (1 NIS first month) + Prompt Booklet",
+      "arc": [
+        {
+          "beat": "WARM-UP",
+          "color": "#38BDF8",
+          "desc": "Teaser posts introduced the AI learning challenge concept and built anticipation, establishing the educational value proposition before any commercial ask."
+        },
+        {
+          "beat": "SOFT-SELL",
+          "color": "#FBBF24",
+          "desc": "Mid-campaign posts began directing challenge participants toward the AI Life Club with a low-friction 1 NIS trial offer, paired with the Prompt Booklet as a tangible incentive."
+        },
+        {
+          "beat": "HARD-SELL",
+          "color": "#F43F5E",
+          "desc": "Direct conversion posts pushed the AI Life Club membership and Brainers Club with explicit pricing and urgency, targeting challenge participants who had received free value via WhatsApp recordings."
+        },
+        {
+          "beat": "RECAP",
+          "color": "#34D399",
+          "desc": "A final recap post closed the challenge, celebrated participant wins, and made a last-pass conversion offer to anyone who had not yet joined the paid community."
+        }
+      ]
+    },
+    "CAMP-MONEYMAKER-Jan24": {
+      "title": "AI MoneyMaker Course Launch — January 2024",
+      "description": "A 10-post Facebook Personal launch campaign for the AI MoneyMaker course, running December 2023 to January 2024 with a tight pre-launch to launch urgency arc. The campaign used aggressive pricing mechanics — 90% off and 48-hour countdown windows — alongside behind-the-scenes and social proof content to maximise launch-week conversions. The sequence beat pattern reveals a textbook product launch structure with personal narrative woven throughout.",
+      "sells": "AI MoneyMaker course (launch price, 90% off, 48hr urgency window)",
+      "arc": [
+        {
+          "beat": "PRE-LAUNCH-AWARENESS",
+          "color": "#38BDF8",
+          "desc": "Early posts seeded awareness of the upcoming AI MoneyMaker course without revealing price, building curiosity and priming the audience for the launch."
+        },
+        {
+          "beat": "PRE-LAUNCH-PERSONAL",
+          "color": "#A78BFA",
+          "desc": "A personal story post — referencing a live workshop at the Civil Service Commission — established Eden's authority and real-world AI application credibility ahead of the launch."
+        },
+        {
+          "beat": "PRE-LAUNCH-BTS",
+          "color": "#FBBF24",
+          "desc": "Behind-the-scenes content humanised the launch process and created insider investment among followers, increasing perceived value of the course before the cart opened."
+        },
+        {
+          "beat": "PRE-LAUNCH-SOCIAL-PROOF",
+          "color": "#34D399",
+          "desc": "Social proof posts showcasing early results or testimonials were deployed immediately before launch to convert any remaining sceptical warm audience members."
+        },
+        {
+          "beat": "DAY-1-LAUNCH",
+          "color": "#F97316",
+          "desc": "The official launch post opened the cart with a 90% off pricing anchor and a 48-hour countdown, directing traffic to the course purchase page via a direct link."
+        },
+        {
+          "beat": "DAY-2-URGENCY",
+          "color": "#F43F5E",
+          "desc": "A final urgency post on day two reinforced the countdown with less-than-30-hours-remaining messaging, targeting warm audience members who had not yet purchased."
+        }
+      ]
+    },
+    "SERIES": {
+      "title": "AI News YouTube Series (Ongoing)",
+      "description": "A 10-post YouTube series running September 2024 to January 2025, focused on recurring AI news and agent updates designed to build a subscriber base and drive Brainers Club waitlist sign-ups. The series uses awareness-only subscribe CTAs as the primary hook, with Brainers Club waitlist as the secondary conversion destination. This is Eden's long-form credibility asset within an otherwise short-form content strategy.",
+      "sells": "Awareness Only (YouTube subscribers) / Brainers Club waitlist",
+      "arc": [
+        {
+          "beat": "WARM-UP",
+          "color": "#38BDF8",
+          "desc": "Initial series episodes established the format and topic focus around AI agents and news, building a returning viewer habit with subscribe-only CTAs and no hard commercial ask."
+        },
+        {
+          "beat": "RECAP",
+          "color": "#34D399",
+          "desc": "Recap-format episodes summarised major AI developments and reinforced Eden's expert positioning, with Brainers Club waitlist mentions inserted as a soft monetisation layer for engaged viewers."
+        }
+      ]
+    },
+    "CAMP-Womens-Month-Feb26": {
+      "title": "Women's Month Lovable Partnership — February 2026",
+      "description": "An 8-post campaign across Facebook, WhatsApp, and email in late February to early March 2026, built around a Lovable SheBuilds partnership promotion for Women's Day. The campaign offered 24 hours of free Lovable access plus $350 in credits as the lead incentive, driving traffic to an external Lovable campaign page. The arc moved from soft-sell awareness through social proof to a hard close, with WhatsApp Community as the secondary destination.",
+      "sells": "WA Free → Brainers Club / WhatsApp Community (via Lovable SheBuilds partnership page)",
+      "arc": [
+        {
+          "beat": "WARM-UP",
+          "color": "#38BDF8",
+          "desc": "Initial posts introduced the Women's Month theme and the Lovable SheBuilds partnership, framing the offer around empowerment and the no-cost trial to maximise opt-in appeal."
+        },
+        {
+          "beat": "1 / NONE",
+          "color": "#FBBF24",
+          "desc": "The formal campaign opening post launched the 24-hour free Lovable offer with the external tool link CTA, driving immediate traffic to the Lovable SheBuilds campaign page."
+        },
+        {
+          "beat": "SOFT-SELL",
+          "color": "#A78BFA",
+          "desc": "Mid-campaign posts reinforced the value of the free offer and began weaving in Brainers Club community messaging to warm leads toward membership."
+        },
+        {
+          "beat": "SOCIAL-PROOF",
+          "color": "#34D399",
+          "desc": "Social proof posts highlighted community member results or partner credibility to build trust and reduce friction for audiences considering the WhatsApp community entry."
+        },
+        {
+          "beat": "HARD-SELL",
+          "color": "#F43F5E",
+          "desc": "A closing hard-sell post drove final conversions into the WhatsApp community and Brainers Club, using the Women's Day deadline as a natural urgency anchor."
+        }
+      ]
+    }
+  },
+  "campaignNames": {
+    "NONE": "Always-On Content Engine (Ongoing)",
+    "UNKNOWN": "TikTok/Instagram/Threads Dark Campaign",
+    "CAMP-Brainstorm-Oct25": "Brainstorm Event Launch — October 2025",
+    "CAMP-Claude-Code-Mar26": "Claude Code Tool Launch — March 2026",
+    "CAMP-LEARN-AI-CHALLENGE-May25": "Learn AI Challenge — May 2025",
+    "SERIES": "AI News YouTube Series (Ongoing)",
+    "CAMP-MONEYMAKER-Jan24": "AI MoneyMaker Course Launch — January 2024",
+    "CAMP-Womens-Month-Feb26": "Women's Month Lovable Partnership — February 2026"
+  },
+  "campaignSells": {
+    "NONE": "Brainers Club / AI Life membership (primary); brand awareness (secondary)",
+    "UNKNOWN": "WA Free → Brainers Club / Cross-Platform Follow",
+    "CAMP-Brainstorm-Oct25": "Live Brainstorm event → Brainers Club / AI Life membership",
+    "CAMP-Claude-Code-Mar26": "WA Free lead capture → Brainers Club membership",
+    "CAMP-LEARN-AI-CHALLENGE-May25": "AI Life Club (1 NIS first month) + Prompt Booklet",
+    "SERIES": "Awareness / YouTube subscribers → Brainers Club waitlist",
+    "CAMP-MONEYMAKER-Jan24": "AI MoneyMaker course (90% off launch price)",
+    "CAMP-Womens-Month-Feb26": "Lovable SheBuilds free trial → WhatsApp Community → Brainers Club"
+  },
+  "opportunities": {
+    "channelGaps": [
+      {
+        "id": "cg_001",
+        "title": "YouTube is severely underdeveloped relative to authority positioning",
+        "type": "channel",
+        "severity": "high",
+        "insight": "YouTube accounts for only 25 posts out of 1518 total — less than 2% of output — despite Eden's clear authority-building strategy and AI news expertise. The SERIES campaign demonstrates the format works (Brainers Club waitlist CTA), but cadence is too low to build meaningful search-driven subscriber volume. Competitors who dominate YouTube AI news own persistent search traffic that compounds over time.",
+        "opportunity": "A consistent weekly AI news or tool-breakdown series on YouTube would generate evergreen search discovery that Eden's Facebook-heavy strategy cannot access, building an audience that is not algorithm-dependent.",
+        "how": "Repurpose existing LinkedIn and Facebook AI news posts into structured 5-10 minute YouTube videos with SEO-optimised titles, published on a fixed weekly schedule to build subscriber habit and search indexing.",
+        "evidence": [
+          "25 YouTube posts vs 558 fb_personal posts",
+          "SERIES campaign shows waitlist CTA viability",
+          "NEWS-BREAK hook type = 256 posts of repurposable material"
+        ]
+      },
+      {
+        "id": "cg_002",
+        "title": "TikTok is invisible in the public data despite high AI content demand",
+        "type": "channel",
+        "severity": "high",
+        "insight": "TikTok appears only in the UNKNOWN campaign bucket (65 posts with no public data visibility), suggesting Eden either has a minimal or private TikTok presence. The UNKNOWN campaign's 'dizzying pace' hook and PDF-via-DM mechanics suggest a cold-audience acquisition funnel that is not fully built out. TikTok's algorithm is uniquely suited to viral AI content discovery among 25-45 year old professionals.",
+        "opportunity": "A structured TikTok presence using the same news-break and curiosity-gap hooks that drive Eden's 515 top-performing Facebook posts would open a new cold-audience acquisition channel with zero overlap to current reach.",
+        "how": "Launch a TikTok series repurposing the top-performing curiosity-gap and shock hook posts from Facebook, with a DM-to-PDF CTA that mirrors the existing WhatsApp funnel entry mechanic.",
+        "evidence": [
+          "UNKNOWN campaign: tiktok listed as channel",
+          "CURIOSITY-GAP + NEWS-BREAK = 515 posts of proven hook content",
+          "COMMENT-TO-RECEIVE CTA works natively on TikTok comments"
+        ]
+      },
+      {
+        "id": "cg_003",
+        "title": "Email channel is absent from most campaigns despite WhatsApp list ownership",
+        "type": "channel",
+        "severity": "medium",
+        "insight": "Email appears in only two campaigns (CAMP-Claude-Code-Mar26 and CAMP-Womens-Month-Feb26) out of eight detected, suggesting Eden's owned audience sits primarily in WhatsApp rather than email. WhatsApp lists face platform policy risk and do not support the same segmentation, automation, or deliverability analytics that email provides. The 298-post WA Free funnel is building a list that lives on a rented platform.",
+        "opportunity": "Building a parallel email list from the existing WhatsApp community would create a more durable owned audience and enable automated nurture sequences that the WhatsApp format cannot replicate.",
+        "how": "Add an email capture step to the existing WhatsApp funnel — offering a bonus AI resource deliverable via email — and begin sending a weekly digest that mirrors the Facebook content cadence to build cross-channel redundancy.",
+        "evidence": [
+          "Email appears in only 2 of 8 campaigns",
+          "298 posts drive to WA Free → Brainers Club",
+          "WhatsApp community is the primary owned channel at risk"
+        ]
+      },
+      {
+        "id": "cg_004",
+        "title": "LinkedIn content volume does not match LinkedIn's B2B conversion potential",
+        "type": "channel",
+        "severity": "medium",
+        "insight": "LinkedIn accounts for 291 posts (19% of total), yet campaign data shows it primarily serves a WARM-UP and STANDALONE function rather than being used as a dedicated B2B conversion channel. The AI MoneyMaker course launch and Brainers Club campaigns do not appear to use LinkedIn as a hard-sell destination, leaving enterprise and SME buyers largely unconverted. Eden's Civil Service Commission workshop mention suggests B2B credibility exists but is not being monetised.",
+        "opportunity": "A LinkedIn-specific B2B campaign promoting corporate AI training workshops or team Brainers Club memberships would capture a higher-value buyer segment that Facebook audiences do not reach.",
+        "how": "Create a LinkedIn-only campaign arc (warm-up → case study → offer) targeting HR managers and team leads, using the existing workshop social proof content as the authority anchor and a direct calendar-booking CTA.",
+        "evidence": [
+          "291 LinkedIn posts but none mapped to BOFU campaign beats in B2B context",
+          "Civil Service Commission workshop mentioned in CAMP-MONEYMAKER-Jan24 hook",
+          "PERSONAL-STORY hook type (214 posts) performs well on LinkedIn"
+        ]
+      }
+    ],
+    "topicGaps": [
+      {
+        "id": "tg_001",
+        "title": "No visible case study or student result content series",
+        "severity": "high",
+        "insight": "Across 1518 posts, social proof appears only as a campaign beat (SOCIAL-PROOF, SOCIAL-PROOF-1) rather than as a recurring standalone content type. There is no evidence of a regular 'student spotlight' or 'member results' series that would provide ongoing conversion fuel between campaign launches. Competitors with high-ticket memberships typically use member result content as their highest-converting mid-funnel asset.",
+        "opportunity": "A weekly member results post series would serve as always-on social proof that converts warm audiences who missed launch campaigns, reducing dependence on time-limited urgency mechanics.",
+        "how": "Interview Brainers Club members monthly to produce 4 social proof posts per month — one per platform — featuring specific before/after AI skill transformations, published consistently between campaign cycles.",
+        "evidence": [
+          "SOCIAL-PROOF beat appears only within campaign arcs, not as standalone content type",
+          "PERSONAL-STORY hook (214 posts) shows narrative content works",
+          "Brainers Club / AI Life is primary destination for 344 posts — conversion proof assets are underutilised"
+        ]
+      },
+      {
+        "id": "tg_002",
+        "title": "No long-form comparison or deep-dive AI tool content",
+        "severity": "medium",
+        "insight": "Eden's hook strategy heavily favours news-break (256 posts) and curiosity-gap (259 posts) formats, which are inherently short and topical. There is no detected campaign or content series built around long-form AI tool comparisons, tutorials, or deep-dive guides that would rank in search and capture bottom-of-funnel buyers actively researching tools. Claude Code and Brainstorm campaigns gesture at this but are not structured as searchable evergreen content.",
+        "opportunity": "Long-form comparison content (e.g. 'Claude vs GPT-4 for business tasks') would capture high-intent search traffic from professionals actively researching AI tools — an audience already pre-sold on AI adoption.",
+        "how": "Publish monthly long-form LinkedIn articles and YouTube videos structured as definitive tool comparisons or beginner-to-advanced tutorials, with Brainers Club as the 'go deeper' CTA at the end of each piece.",
+        "evidence": [
+          "NEWS-BREAK hook = 256 posts — all short-form and reactive",
+          "CAMP-Claude-Code-Mar26 ran a 4-part series but no evergreen search-optimised format",
+          "YouTube only 25 posts — no long-form tutorial library detected"
+        ]
+      },
+      {
+        "id": "tg_003",
+        "title": "AI for specific professional roles is an untapped hook angle",
+        "severity": "medium",
+        "insight": "The content hook data shows broad AI news and curiosity-gap framing dominates, with no detected vertical-specific content targeting specific job functions (marketers, HR teams, finance professionals, etc.). The Civil Service Commission workshop is the only role-specific professional mention in the data. Vertical-specific AI content consistently outperforms generic AI news in engagement and conversion for professional audiences.",
+        "opportunity": "A rotating series of role-specific AI use case posts (e.g. 'AI for HR managers this week') would allow Eden to test which professional verticals convert best into Brainers Club while expanding reach into niche LinkedIn communities.",
+        "how": "Produce one vertical-specific AI post per week on LinkedIn, rotating through 5-6 professional roles, tracking which verticals drive the highest comment and DM rates to inform a future targeted campaign.",
+        "evidence": [
+          "Civil Service Commission workshop = only role-specific mention in all campaign data",
+          "QUESTION hook (124 posts) could be redirected to role-specific prompts",
+          "LinkedIn audience = 291 posts published but no vertical targeting detected"
+        ]
+      },
+      {
+        "id": "tg_004",
+        "title": "No visible content addressing AI sceptics or beginners with objections",
+        "severity": "low",
+        "insight": "Eden's hook strategy skews toward already-curious AI audiences (news-break, curiosity-gap) with little detected content that directly addresses the objections of AI-hesitant professionals who have not yet adopted AI tools. The SHOCK hook type (139 posts) comes closest but appears to be used for engagement rather than objection handling. This leaves a large pool of potential Brainers Club buyers unaddressed.",
+        "opportunity": "Objection-handling content ('I tried AI and it didn't work for me — here's what changed') would activate a passive audience segment that engages with Eden's content but has not converted due to unaddressed scepticism.",
+        "how": "Create a monthly 'AI Myths Debunked' post series using the personal-story hook format, directly addressing the most common objections heard in the Brainers Club community and ending with a low-friction WhatsApp community CTA.",
+        "evidence": [
+          "PERSONAL-STORY hook = 214 posts but none categorised as objection-handling",
+          "SHOCK hook = 139 posts — primarily used for reach, not conversion",
+          "WA Free funnel (298 posts) needs more objection-handling content at the top to improve entry rate"
+        ]
+      }
+    ],
+    "structuralGaps": [
+      {
+        "id": "sg_001",
+        "title": "Campaign arcs lack a structured post-purchase retention sequence",
+        "insight": "All detected campaigns (MoneyMaker, Claude Code, Learn AI Challenge, Brainstorm) end at the conversion beat with no visible post-purchase onboarding or retention arc in the public data. The RECYCLE beat in the always-on campaign suggests content is repurposed but not specifically designed to reduce churn or increase lifetime value for existing Brainers Club members. A member who buys and then churns after one month represents a significant revenue leak.",
+        "opportunity": "Introducing a visible post-purchase content arc — member wins, advanced features, community highlights — published on Facebook Group and WhatsApp would reduce churn and increase referral-driven new member acquisition from satisfied customers."
+      },
+      {
+        "id": "sg_002",
+        "title": "LINK-IN-COMMENT dominates but suppresses direct measurability",
+        "insight": "LINK-IN-COMMENT is the single most-used CTA method with 350 posts, chosen to avoid Facebook and LinkedIn reach suppression from external links. While this protects organic reach, it creates a structural tracking gap — there is no clean click-through attribution between post engagement and WhatsApp or course page visits. The 222 'No Destination' posts further suggest a portion of content output is not connected to any measurable funnel outcome.",
+        "opportunity": "Implementing UTM-tagged landing pages for all comment-delivered links and reducing the 222 no-destination posts to at minimum a soft WhatsApp community CTA would dramatically improve funnel attribution and reveal which content types actually drive conversions."
+      },
+      {
+        "id": "sg_003",
+        "title": "Course sales are isolated to single campaigns rather than evergreen",
+        "insight": "Course purchase as a destination accounts for only 76 posts, and the only clearly structured course launch campaign is CAMP-MONEYMAKER-Jan24. This suggests Eden's course revenue is highly event-dependent — concentrated in launch windows — rather than driven by an evergreen funnel that sells the course year-round. Dependence on launch mechanics creates unpredictable revenue spikes and troughs.",
+        "opportunity": "Building a permanently live course funnel with an evergreen webinar or video sales letter as the entry point would convert the existing daily content audience into course buyers continuously, reducing revenue volatility between launch events."
+      },
+      {
+        "id": "sg_004",
+        "title": "Partnership and co-marketing is a single use case, not a systematic channel",
+        "insight": "The Lovable SheBuilds Women's Month campaign is the only detected external partnership in the dataset, representing a significant structural gap in a co-marketing strategy that could massively extend reach. With 1518 posts of self-generated content, Eden is bearing the full cost of audience acquisition without leveraging partner audiences that AI tool companies, Israeli tech communities, or complementary coaches could provide. Single-brand marketing creates a ceiling on organic reach growth.",
+        "opportunity": "A systematic quarterly co-marketing partnership with AI tool companies (as demonstrated by the Lovable campaign) or complementary professionals would inject fresh cold audiences into the top of Eden's funnel without additional content production cost."
+      }
+    ]
+  },
+  "generatedAt": "2026-04-15T08:51:26.273Z",
+  "_postCount": 1518,
+  "_competitor": "eden_bibas",
+  "_regenReason": "first run"
+}
