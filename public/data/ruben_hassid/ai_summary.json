@@ -2,130 +2,168 @@
   "funnel": [
     {
       "id": "step1",
-      "label": "LinkedIn Content Feed",
-      "sublabel": "LinkedIn — 33 posts",
+      "label": "LinkedIn Content Hook",
+      "sublabel": "LinkedIn (33 posts)",
       "color": "#38BDF8",
-      "desc": "Ruben Hassid operates entirely through LinkedIn organic content, publishing standalone value posts to build audience awareness. Every touchpoint begins and ends on LinkedIn, making it both the top-of-funnel and the primary distribution engine."
+      "desc": "All 33 posts live exclusively on LinkedIn, using HOW-TO hooks (12 posts) and NUMBER-LISTICLE formats (4 posts) to drive awareness. The dominant entry point is practical, instructional content framed around Claude AI features and setup workflows."
     },
     {
       "id": "step2",
-      "label": "Standalone Value Posts",
-      "sublabel": "Educational AI content",
-      "color": "#34D399",
-      "desc": "Each post functions as an independent unit of value — typically AI tips, workflows, or insights — with no campaign arc tying them together. This positions Ruben as a thought leader and keeps followers returning without a structured nurture sequence."
+      "label": "In-Post Link Click",
+      "sublabel": "LINK-IN-POST (15 posts)",
+      "color": "#FBBF24",
+      "desc": "The primary CTA mechanic is a direct link embedded in the post body (15 of 16 CTA posts), minimising friction for the reader to click through immediately. This approach prioritises speed of conversion over community engagement or comment-baiting."
     },
     {
       "id": "step3",
-      "label": "Audience Trust Build",
-      "sublabel": "Reputation and authority layer",
-      "color": "#FBBF24",
-      "desc": "By consistently delivering actionable AI content without hard selling, Ruben builds high-trust authority on LinkedIn. Followers associate his name with practical AI expertise, which primes them for eventual conversion when offers are made."
+      "label": "Free Guide / Resource",
+      "sublabel": "how-to-ai.guide / how-to-claude.ai",
+      "color": "#34D399",
+      "desc": "Mid-funnel destination is a free AI learning guide or Claude setup resource, acting as a value exchange that builds trust and collects leads. This step bridges the educational LinkedIn content to a deeper owned-channel asset."
     },
     {
       "id": "step4",
-      "label": "Implicit Conversion",
-      "sublabel": "Profile, DMs, or undisclosed links",
+      "label": "Newsletter / Email Capture",
+      "sublabel": "Newsletter/guide signup",
+      "color": "#A78BFA",
+      "desc": "A newsletter or guide signup destination captures the audience into an owned email list, decoupling future communication from LinkedIn's algorithm. This is a key retention layer that converts one-time content viewers into recurring subscribers."
+    },
+    {
+      "id": "step5",
+      "label": "Tool Adoption / Upgrade",
+      "sublabel": "Claude Pro/Max, Wispr Flow, Gamma",
       "color": "#F97316",
-      "desc": "No tracked destination URLs or explicit CTAs appear in the dataset, suggesting conversion happens passively — through profile visits, inbound DMs, or off-platform word-of-mouth. The funnel bottom is invisible but likely driven by brand pull rather than direct response mechanics."
+      "desc": "The ultimate commercial conversion is driving tool adoption — primarily Claude Pro/Max subscriptions and affiliated tools like Wispr Flow and Gamma. Multiple destinations suggest affiliate or partnership revenue rather than a single owned product, spreading monetisation across several platforms."
     }
   ],
-  "campaignIntel": {},
-  "campaignNames": {},
-  "campaignSells": {},
+  "campaignIntel": {
+    "CAMP-Claude-Features-Apr26": {
+      "title": "Claude Features Deep-Dive (April 2026)",
+      "description": "This campaign promoted Claude's paid feature tiers and Opus upgrade through a VALUE-phase content arc, delivering educational posts that walked the audience through how to unlock and use Claude's advanced capabilities. All 3 posts ran on LinkedIn between April 4–10 and used direct in-post or in-comment links to claude.com and how-to-ai.guide. The campaign leaned on aspirational HOW-TO framing (e.g. 'climb all 4 layers of Claude in one weekend') to make a paid upgrade feel like a skill achievement rather than a purchase.",
+      "sells": "Claude Opus upgrade and paid Claude features",
+      "arc": [
+        {
+          "beat": "VALUE",
+          "color": "#34D399",
+          "desc": "All 3 posts delivered instructional value content showing audience members how to use Claude's tiered features, with CTAs pointing directly to claude.com download and how-to-ai.guide resources."
+        }
+      ]
+    },
+    "CAMP-Claude-Setup-Apr26": {
+      "title": "Claude Setup & Cowork Onboarding (April 2026)",
+      "description": "This 3-post LAUNCH campaign ran in a compressed 2-day window (April 7–8) focused on getting new users set up with Claude Cowork and Claude's core interface. Posts used step-by-step HOW-TO hooks and drove traffic to how-to-ai.guide and how-to-claude.ai as primary destinations. The tight posting cadence suggests a deliberate launch-day blitz to capitalise on a news moment or product update.",
+      "sells": "Claude setup guide, Claude Cowork feature adoption",
+      "arc": [
+        {
+          "beat": "LAUNCH",
+          "color": "#F43F5E",
+          "desc": "All 3 posts fired within 48 hours in a launch-style burst, each directing readers to Claude setup resources with instructional content designed to reduce onboarding friction for new Claude users."
+        }
+      ]
+    }
+  },
+  "campaignNames": {
+    "CAMP-Claude-Features-Apr26": "Claude Features Deep-Dive (April 2026)",
+    "CAMP-Claude-Setup-Apr26": "Claude Setup & Cowork Onboarding (April 2026)"
+  },
+  "campaignSells": {
+    "CAMP-Claude-Features-Apr26": "Claude Opus upgrade and paid Claude Pro/Max features",
+    "CAMP-Claude-Setup-Apr26": "Claude Cowork feature adoption and Claude setup guide/resources"
+  },
   "opportunities": {
     "channelGaps": [
       {
-        "id": "cg_001",
-        "title": "Zero multi-channel presence",
+        "id": "cg1",
+        "title": "Zero presence beyond LinkedIn",
         "type": "channel",
         "severity": "high",
-        "insight": "Ruben Hassid publishes exclusively on LinkedIn with 33 out of 33 posts on a single platform. There is no detected presence on YouTube, Instagram, X/Twitter, newsletters, or podcasts. This creates total dependency on the LinkedIn algorithm.",
-        "opportunity": "Eden Bibas can dominate channels Ruben ignores — particularly YouTube Shorts, Instagram Reels, or a newsletter — reaching AI-curious audiences who are not active LinkedIn users.",
-        "how": "Repurpose LinkedIn-style educational AI content into short-form video for YouTube Shorts and Instagram Reels, and build an email list that Ruben's audience never accesses.",
+        "insight": "Ruben Hassid publishes 100% of his 33 posts exclusively on LinkedIn, with no detected presence on YouTube, Twitter/X, TikTok, or Instagram. This creates total algorithmic dependency on a single platform and limits reach to LinkedIn's professional demographic only.",
+        "opportunity": "Eden Bibas can capture audiences that Ruben is entirely ignoring — particularly short-form video audiences on TikTok and YouTube Shorts where AI tool tutorials are experiencing high organic reach.",
+        "how": "Repurpose HOW-TO content as short-form video walkthroughs on TikTok and YouTube Shorts to own the visual/demo format that LinkedIn cannot replicate.",
         "evidence": []
       },
       {
-        "id": "cg_002",
-        "title": "No email or newsletter channel",
+        "id": "cg2",
+        "title": "No YouTube long-form content",
         "type": "channel",
         "severity": "high",
-        "insight": "There is no evidence of any newsletter, lead magnet, or email capture strategy in Ruben's data. His entire audience relationship exists inside LinkedIn, where he does not own the connection.",
-        "opportunity": "Eden Bibas can build a owned-audience asset that Ruben lacks entirely, creating a direct line to subscribers independent of any platform algorithm.",
-        "how": "Launch a weekly AI tips newsletter promoted via LinkedIn posts, using a free resource or checklist as the lead magnet to drive sign-ups from Ruben's same target audience.",
+        "insight": "There is no YouTube presence detected despite Ruben's content being deeply instructional and tutorial-oriented — a format that maps directly onto YouTube search behaviour. HOW-TO content on LinkedIn has a short shelf life, while the same content on YouTube compounds over time via SEO.",
+        "opportunity": "Eden Bibas can build a durable discovery engine on YouTube by publishing the same instructional AI content that Ruben confines to LinkedIn's feed, capturing search-intent traffic that LinkedIn never reaches.",
+        "how": "Launch a YouTube channel with structured Claude and AI tool tutorials, targeting search queries like 'how to set up Claude' and 'Claude vs ChatGPT' that Ruben's posts address but cannot rank for.",
         "evidence": []
       },
       {
-        "id": "cg_003",
-        "title": "No video-native platform presence",
+        "id": "cg3",
+        "title": "No Twitter/X thought leadership",
         "type": "channel",
         "severity": "medium",
-        "insight": "All 33 posts are LinkedIn-native with no detected YouTube, TikTok, or Instagram video content. Video-native platforms reward discoverability through search and algorithm recommendation in ways LinkedIn does not.",
-        "opportunity": "Eden Bibas can capture search-driven discovery on YouTube by publishing AI tutorial videos that rank organically — a channel Ruben leaves completely open.",
-        "how": "Create 5-10 minute YouTube tutorials on the same AI topics Ruben covers in text, optimising for search terms like 'how to use ChatGPT for X' to pull in audiences Ruben cannot reach.",
+        "insight": "Ruben's CONTRARIAN and SHOCK hook types (4 posts combined) suggest content that would perform strongly on Twitter/X, yet there is no detected presence there. The fast-twitch, opinion-driven format of those hooks is native to Twitter culture.",
+        "opportunity": "Eden Bibas can own the AI contrarian-take space on Twitter/X, building a distinct voice that positions against mainstream AI hype in a channel Ruben has vacated entirely.",
+        "how": "Post daily short-form contrarian takes on AI tools and Claude features on Twitter/X, cross-linking to longer LinkedIn or YouTube content to drive multi-platform audience growth.",
         "evidence": []
       }
     ],
     "topicGaps": [
       {
-        "id": "tg_001",
-        "title": "No structured learning or curriculum content",
+        "id": "tg1",
+        "title": "No competitor comparison content",
         "severity": "high",
-        "insight": "Ruben's 33 posts are all standalone, with no campaign or series detected. There is no structured curriculum, step-by-step course content preview, or progressive learning arc to guide followers from beginner to advanced.",
-        "opportunity": "Eden Bibas can publish a clearly sequenced content series — '30 days of AI skills' or 'Week 1: prompting basics' — giving audiences a reason to follow consistently rather than consuming one-off posts.",
-        "how": "Design a 4-6 week public learning series on LinkedIn or YouTube where each post explicitly builds on the last, tagging it as 'Part 2 of 6' to drive return engagement and series completion.",
+        "insight": "All detected content and campaigns are centred on Claude specifically — there is no detected content comparing Claude to ChatGPT, Gemini, or other AI tools. Comparison content is a high-intent discovery format that captures audiences actively evaluating tools.",
+        "opportunity": "Eden Bibas can publish head-to-head AI tool comparisons to capture audiences mid-decision, positioning as a trusted neutral guide rather than a single-tool advocate.",
+        "how": "Create structured comparison posts and videos (e.g. 'Claude vs ChatGPT for [specific use case]') targeting the large audience that is tool-curious but not yet tool-committed.",
         "evidence": []
       },
       {
-        "id": "tg_002",
-        "title": "No personal story or case study content",
+        "id": "tg2",
+        "title": "No real-world ROI or results content",
+        "severity": "high",
+        "insight": "Ruben's content is heavily process-oriented (HOW-TO, setup guides, feature walkthroughs) with no detected posts showing concrete business outcomes, time saved, or revenue generated using these tools. The funnel drives to tool adoption without proof of results.",
+        "opportunity": "Eden Bibas can differentiate by publishing case studies, before/after workflows, and measurable ROI examples that validate AI tool adoption with evidence rather than instruction alone.",
+        "how": "Share documented examples of AI-driven productivity or revenue results — even from personal use — to build credibility that purely instructional content cannot provide.",
+        "evidence": []
+      },
+      {
+        "id": "tg3",
+        "title": "No beginner onboarding content arc",
         "severity": "medium",
-        "insight": "The dataset shows no campaign arcs built around personal transformation stories, client results, or before-and-after case studies. Ruben's content appears to be purely informational without narrative hooks rooted in real outcomes.",
-        "opportunity": "Eden Bibas can differentiate by publishing specific client or personal case studies with measurable outcomes — 'how I saved 10 hours a week using this AI workflow' — which build emotional resonance alongside credibility.",
-        "how": "Document one real AI implementation story per month with specific metrics, publishing it as a LinkedIn carousel or short video that contrasts life before and after the AI solution.",
+        "insight": "Despite setup campaigns, the detected hooks ('climb all 4 layers of Claude', 'set up Claude Cowork') assume a degree of prior familiarity with AI tools. There is no detected content targeting true beginners who have never used any AI tool.",
+        "opportunity": "Eden Bibas can own the absolute beginner entry point — the largest potential audience segment — by creating zero-to-one AI onboarding content that Ruben's intermediate-skewed content ignores.",
+        "how": "Develop a 'start here' content series for AI beginners with no assumed knowledge, using plain language and simple use cases to capture the mass-market audience above Ruben's addressable base.",
         "evidence": []
       },
       {
-        "id": "tg_003",
-        "title": "No community or audience participation content",
+        "id": "tg4",
+        "title": "Single-tool dependency (Claude only)",
         "severity": "medium",
-        "insight": "There is no evidence of polls, challenges, Q&A posts, or community-building content in Ruben's strategy. All 33 posts appear to be broadcast-style with no mechanism for audience co-creation or participation.",
-        "opportunity": "Eden Bibas can build stronger audience loyalty by creating participatory content — weekly AI challenges, open questions, or 'submit your workflow for a teardown' series — that makes followers feel like contributors.",
-        "how": "Run a monthly 'AI challenge' post where followers share their results in comments, then feature the best responses in a follow-up post to incentivise participation and boost reach.",
-        "evidence": []
-      },
-      {
-        "id": "tg_004",
-        "title": "No visible product or offer content",
-        "severity": "low",
-        "insight": "With no top destinations detected across 33 posts, Ruben appears to avoid direct promotional content entirely. There is no detected course launch, service offer, or product announcement in the dataset.",
-        "opportunity": "Eden Bibas can be more transparent about products and services without losing credibility — audiences often respect clarity about what someone sells when trust is already established through value content.",
-        "how": "Introduce a monthly 'what I offer' post framed as a resource guide — not a hard sell — that naturally surfaces services and converts warm followers who are already engaged with the content.",
+        "insight": "While Wispr Flow and Gamma appear as minor destinations, the overwhelming content focus is Claude-centric. This creates vulnerability if Claude's brand reputation shifts or if another tool surpasses it, and limits appeal to users invested in other AI ecosystems.",
+        "opportunity": "Eden Bibas can build a broader 'AI toolkit' positioning that covers multiple tools, making content resilient to any single platform's fortunes and appealing to a wider audience.",
+        "how": "Publish multi-tool workflow content showing how Claude, ChatGPT, Gemini, and other tools work together, positioning Eden as the go-to guide for the full AI stack rather than one vendor.",
         "evidence": []
       }
     ],
     "structuralGaps": [
       {
-        "id": "sg_001",
-        "title": "No campaign architecture or launch sequencing",
-        "insight": "Every one of Ruben's 33 posts is standalone with zero campaign structures detected. There is no teaser-to-launch arc, no urgency mechanics, and no coordinated multi-post narrative driving toward a specific conversion event.",
-        "opportunity": "Eden Bibas can deploy structured campaign arcs — even simple 4-post sequences — that build momentum, create anticipation, and drive measurable conversion spikes that Ruben's flat content calendar cannot produce."
+        "id": "sg1",
+        "title": "No owned product or course detected",
+        "insight": "All conversion destinations point to third-party tools (Claude, Wispr Flow, Gamma) or free guides, suggesting Ruben monetises primarily through affiliate relationships rather than owned products. This caps his revenue ceiling and creates dependency on partner programmes.",
+        "opportunity": "Eden Bibas can build and sell an owned AI course, cohort, or toolkit that captures the full margin of the audience Ruben is sending to other companies' platforms — converting the same educational demand into direct revenue."
       },
       {
-        "id": "sg_002",
-        "title": "Single-platform dependency creates fragility",
-        "insight": "With a 100% LinkedIn concentration, any algorithm change, account restriction, or platform decline would eliminate Ruben's entire audience reach overnight. There is no redundancy, no owned channel, and no cross-platform safety net in the data.",
-        "opportunity": "Eden Bibas can build a more resilient content infrastructure across two or three platforms plus an email list, meaning audience relationships survive any single platform disruption and compound across channels simultaneously."
+        "id": "sg2",
+        "title": "Compressed campaign windows with no urgency arc",
+        "insight": "Both detected campaigns are short (3–7 days) and use only VALUE or LAUNCH beats with no detected URGENCY or CLOSE phase. This means Ruben leaves conversion on the table from warm audiences who need a deadline or scarcity signal to act.",
+        "opportunity": "Eden Bibas can run full-arc campaigns (TEASER → LAUNCH → VALUE → URGENCY → CLOSE) to maximise conversion from each content push, extracting more revenue per campaign from a comparably sized audience."
       },
       {
-        "id": "sg_003",
-        "title": "No tracked or visible conversion funnel",
-        "insight": "The absence of any top destination data across 33 posts means there is no visible CTA strategy, no tracked link clicks, and no measurable funnel from content to revenue. Conversion, if it happens at all, is entirely passive and unmeasured.",
-        "opportunity": "Eden Bibas can gain a significant advantage by building a transparent and tracked funnel — even a simple link-in-bio flow with a freebie to email list to offer — creating measurable ROI from content that Ruben's strategy currently cannot demonstrate."
+        "id": "sg3",
+        "title": "No community or engagement layer",
+        "insight": "With only 1 LINK-IN-COMMENT post out of 16 CTA posts, Ruben's strategy is almost entirely broadcast-and-click with minimal two-way engagement mechanics. There is no detected community, group, Discord, or cohort structure that would increase audience retention and loyalty.",
+        "opportunity": "Eden Bibas can build a community layer — a LinkedIn newsletter, Discord, or cohort group — that transforms one-time content viewers into a retained, monetisable audience that Ruben's broadcast-only approach fails to cultivate."
       }
     ]
   },
-  "generatedAt": "2026-04-15T08:52:07.609Z",
+  "generatedAt": "2026-04-15T09:12:11.110Z",
   "_postCount": 33,
   "_competitor": "ruben_hassid",
-  "_regenReason": "first run"
+  "_regenReason": "4 new campaign(s) detected: CAMP-Prompting-Apr26, CAMP-Claude-Features-Apr26, CAMP-Claude-Setup-Apr26, CAMP-Claude-Skills-Apr26"
 }
