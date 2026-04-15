@@ -126,12 +126,13 @@ const HOOK_WHY = {
   'HOW-TO':"promises a practical, step-by-step payoff — clear value before the reader has to do anything",
   'VALUE-OFFER':"leads with a free deliverable — the reader knows exactly what they're getting before engaging",
 }
-const CHAN_ROLE = {
+// Eden-specific static channel labels (kept for Eden only)
+const EDEN_CHAN_ROLE = {
   instagram:'Lead capture',fb_personal:'Warm broadcast',fb_group:'Testing ground',
   linkedin:'Authority — fires last',whatsapp:'Pre-launch — warmest audience',email:'Closes the sale',
   tiktok:'Reach — underinvested',youtube:'Long-form authority',
 }
-const CHAN_HOW = {
+const EDEN_CHAN_HOW = {
   instagram:"People comment a keyword, automation sends them a DM with the link. Every commenter becomes a tracked contact and the comment count signals reach to Instagram's algorithm.",
   fb_personal:"Facebook penalises posts with links in the caption, so links go in the first comment or require a comment to receive. Each reply signals engagement back to Facebook.",
   fb_group:"Large groups are where offers are tested before going public. A strong response is the green light to fire every other channel.",
@@ -142,7 +143,148 @@ const CHAN_HOW = {
   youtube:"Long-form tutorials and news commentary. Lower engagement than social channels — YouTube audiences consume without commenting the way Facebook audiences do.",
 }
 
-function buildNarrative(analysis, posts, allPosts, name) {
+// Data-driven channel role label (for competitors other than Eden)
+function buildChannelRole(ch, d) {
+  const ckPosts = d.posts.filter(p => p.cta_method === 'COMMENT-KEYWORD').length
+  const sellPct = d.n > 0 ? Math.round(d.sellPosts.length / d.n * 100) : 0
+  const givePct = d.n > 0 ? Math.round(d.givePosts.length / d.n * 100) : 0
+  if (ch === 'instagram') return ckPosts > 0 ? 'Lead capture via comment automation' : givePct >= 60 ? 'Value / awareness' : 'Content distribution'
+  if (ch === 'linkedin')  return sellPct > 40 ? 'Active selling' : 'Authority / professional reach'
+  if (ch === 'youtube')   return sellPct > 40 ? 'Selling channel' : 'Long-form content & tutorials'
+  if (ch === 'tiktok')    return 'Short-form reach'
+  if (ch === 'fb_personal') return 'Personal broadcast'
+  if (ch === 'fb_group')  return 'Community / group broadcast'
+  if (ch === 'whatsapp')  return 'Warm audience broadcast'
+  if (ch === 'email')     return 'Direct conversion'
+  return 'Content channel'
+}
+
+// Describe content style from hook_type distribution
+function describeContentStyle(posts) {
+  const JUNK = new Set(['OTHER', 'False', '', 'NONE'])
+  const counts = {}
+  for (const p of posts) {
+    if (p.hook_type && !JUNK.has(p.hook_type)) {
+      counts[p.hook_type] = (counts[p.hook_type] || 0) + 1
+    }
+  }
+  const ranked = Object.entries(counts).sort((a, b) => b[1] - a[1])
+  if (!ranked.length) return null
+  const STYLE_VERB = {
+    'NEWS-BREAK':     'reacts to AI and tech news in real time',
+    'HOW-TO':         'teaches practical, step-by-step skills',
+    'CURIOSITY-GAP':  'builds curiosity with open-loop hooks that force a click or comment',
+    'VALUE-OFFER':    'leads with free resources, tools, and guides',
+    'PAIN-POINT':     'names audience frustrations and promises a solution',
+    'PERSONAL-STORY': 'opens with personal experiences and behind-the-scenes moments',
+    'AUTHORITY':      'leads with credentials, student counts, and results',
+    'NUMBER-LISTICLE':'packages dense information into numbered, scannable lists',
+    'CONTRARIAN':     'challenges conventional wisdom with hot takes',
+    'QUESTION':       'engages the audience directly through provocative questions',
+    'SOCIAL-PROOF':   'showcases wins, results, and testimonials',
+    'FOMO':           'creates urgency around what people might be missing',
+    'HUMOR':          'uses humour and entertainment to grow reach',
+    'CHALLENGE':      'issues direct challenges to push the audience to act',
+  }
+  const top  = ranked[0][0]
+  const desc = STYLE_VERB[top] || top.toLowerCase().replace(/-/g, ' ')
+  if (ranked.length >= 2 && ranked[1][1] >= Math.ceil(ranked[0][1] * 0.4)) {
+    const second = ranked[1][0]
+    const desc2 = STYLE_VERB[second] || second.toLowerCase().replace(/-/g, ' ')
+    return { primary: desc, secondary: desc2, topType: top }
+  }
+  return { primary: desc, secondary: null, topType: top }
+}
+
+// Detect meaningful destination labels from dest_immediate URLs / dest_ultimate buckets
+function detectDestinations(posts) {
+  const urlPatterns = [
+    [/substack|newsletter|signup|guide|how-to|\.guide|\.ai\/guide/i, 'newsletter or guide site'],
+    [/youtube\.com|youtu\.be/i,   'YouTube'],
+    [/instagram\.com/i,           'Instagram'],
+    [/linkedin\.com/i,            'LinkedIn'],
+    [/whatsapp/i,                 'WhatsApp group'],
+    [/telegram/i,                 'Telegram group'],
+    [/podcast|spotify|apple.*podcast/i, 'podcast'],
+    [/course|program|cohort/i,    'paid course / program'],
+    [/claude\.ai|claude\.com|anthropic/i, 'Claude / Anthropic'],
+  ]
+  const buckets = {}
+  const JUNK = new Set(['Awareness only','Brand / awareness only','NONE','False','No CTA','Save post','(none)',''])
+  for (const p of posts) {
+    const immed   = (p.dest_immediate || '').toLowerCase()
+    const ultimate = p.dest_ultimate || ''
+    if (!JUNK.has(ultimate) && ultimate.trim()) {
+      buckets[ultimate] = (buckets[ultimate] || 0) + 1
+    }
+    // Also scan dest_immediate for URL patterns to catch fragmented labels
+    for (const [re, label] of urlPatterns) {
+      if (re.test(immed)) { buckets[label] = (buckets[label] || 0) + 1; break }
+    }
+  }
+  // Merge similar keys: anything matching "newsletter/guide/substack/signup" → one bucket
+  const newsKeys = Object.keys(buckets).filter(k => /newsletter|substack|signup|guide|how-to/i.test(k))
+  if (newsKeys.length > 1) {
+    const total = newsKeys.reduce((s, k) => s + buckets[k], 0)
+    newsKeys.forEach(k => delete buckets[k])
+    buckets['newsletter / guide signup'] = total
+  }
+  return Object.entries(buckets).sort((a, b) => b[1] - a[1])
+}
+
+// Data-driven qualitative channel description (computed from actual posts)
+function buildChannelHow(ch, d) {
+  const total = d.n
+  const pct   = n => `${Math.round(n / total * 100)}%`
+
+  const ckPosts  = d.posts.filter(p => p.cta_method === 'COMMENT-KEYWORD').length
+  const licPosts = d.posts.filter(p => p.cta_method === 'LINK-IN-COMMENT').length
+  const lipPosts = d.posts.filter(p => p.cta_method === 'LINK-IN-POST').length
+  const waPosts  = d.posts.filter(p => p.cta_method === 'WHATSAPP-JOIN').length
+  const noCta    = d.posts.filter(p => !p.cta_method || p.cta_method === 'NONE').length
+
+  const sellPct = Math.round(d.sellPosts.length / total * 100)
+  const givePct = Math.round(d.givePosts.length / total * 100)
+  const style   = describeContentStyle(d.posts)
+  const dests   = detectDestinations(d.posts)
+
+  const parts = []
+
+  // 1. Content model — what is this channel being used for?
+  if (givePct >= 70) {
+    parts.push(`Education-first model: ${givePct}% of posts are free value${style ? `, primarily content that ${style.primary}` : ''}.`)
+  } else if (sellPct > 50) {
+    parts.push(`Primarily a selling channel: ${sellPct}% of posts push an offer${style ? `, using ${style.primary} hooks` : ''}.`)
+  } else if (givePct > 0 && sellPct > 0) {
+    parts.push(`Balanced mix of education (${givePct}%) and promotion (${sellPct}%)${style ? ` — content tends to ${style.primary}` : ''}.`)
+  } else if (style) {
+    parts.push(`Content ${style.primary}${style.secondary ? `, mixing in posts that ${style.secondary}` : ''}.`)
+  }
+
+  // 2. Conversion mechanic — how does the audience get from post to destination?
+  if (ckPosts > 0) {
+    parts.push(`Lead capture mechanic: ${pct(ckPosts)} of posts ask followers to comment a keyword — automation delivers the link via DM, turning every comment into a tracked lead.`)
+  } else if (lipPosts > 0 && lipPosts >= 2) {
+    parts.push(`${pct(lipPosts)} of posts include a direct link — the interested reader clicks through immediately, no extra step.`)
+  } else if (licPosts > 0) {
+    parts.push(`Links go in the first comment rather than the caption — a standard workaround to avoid algorithm down-ranking of caption links.`)
+  } else if (waPosts > 0) {
+    parts.push(`The CTA points to a WhatsApp group — a free, low-friction middle step that warms the audience before any paid offer.`)
+  } else if (noCta >= total * 0.65) {
+    parts.push(`${pct(noCta)} of posts ask for nothing in return — this is a long-game trust-building approach: grow the audience first, monetise later.`)
+  }
+
+  // 3. Destination — where does this channel ultimately send people?
+  if (dests.length >= 2) {
+    parts.push(`When traffic is directed, the top destinations are ${dests.slice(0, 2).map(([k]) => k).join(' and ')}.`)
+  } else if (dests.length === 1 && dests[0][1] >= 2) {
+    parts.push(`Traffic flows toward ${dests[0][0]}.`)
+  }
+
+  return parts.length ? parts.join(' ') : null
+}
+
+function buildNarrative(analysis, posts, allPosts, name, isEden = false) {
   const { campaigns, chAnalysis, sellPosts, givePosts, activeChannels } = analysis
   const total = posts.length
 
@@ -195,10 +337,12 @@ function buildNarrative(analysis, posts, allPosts, name) {
       overallPoints.push(`vs prior period: ${changes.join('; ')}.`)
   }
 
+  // ── Channel section ──────────────────────────────────────────────────────────
   const seqPoints = []
+  const activeChans = activeChannels.filter(ch => chAnalysis[ch]?.n >= 1)
 
-  if (campaigns.length > 0) {
-    const activeChans = activeChannels.filter(ch => chAnalysis[ch]?.n >= 1)
+  if (isEden && campaigns.length > 0) {
+    // Eden-specific multi-channel sequence prose
     const hasWA  = activeChans.includes('whatsapp')
     const hasFBG = activeChans.includes('fb_group')
     const hasIG  = activeChans.includes('instagram')
@@ -221,6 +365,106 @@ function buildNarrative(analysis, posts, allPosts, name) {
       seqPoints.push({ type: 'prose', text: `The channels aren't interchangeable — each has a specific job. ${seqSentences.join(' ')}` })
     else if (seqSentences.length === 1)
       seqPoints.push({ type: 'prose', text: seqSentences[0] })
+  } else if (!isEden) {
+    // Data-driven qualitative channel narrative for competitors
+    if (activeChans.length === 1) {
+      const ch   = activeChans[0]
+      const d    = chAnalysis[ch]
+      const total = d.n
+      const pct  = n => `${Math.round(n / total * 100)}%`
+
+      const ckPosts  = d.posts.filter(p => p.cta_method === 'COMMENT-KEYWORD').length
+      const lipPosts = d.posts.filter(p => p.cta_method === 'LINK-IN-POST').length
+      const licPosts = d.posts.filter(p => p.cta_method === 'LINK-IN-COMMENT').length
+      const noCta    = d.posts.filter(p => !p.cta_method || p.cta_method === 'NONE').length
+      const sellPct  = Math.round(d.sellPosts.length / total * 100)
+      const givePct  = Math.round(d.givePosts.length / total * 100)
+      const style    = describeContentStyle(d.posts)
+      const dests    = detectDestinations(d.posts)
+
+      const sentences = []
+
+      // Dataset scope qualifier
+      sentences.push(`In this dataset, ${name}'s tracked posts are on ${CHANNEL_LABELS[ch]}.`)
+
+      // Content model — the "story"
+      if (givePct >= 70 && noCta >= total * 0.5) {
+        sentences.push(`The model is audience-building first: ${givePct}% of posts are free value with no ask attached — the goal is reach and trust, not immediate conversion.`)
+      } else if (givePct >= 60 && (lipPosts > 0 || ckPosts > 0)) {
+        sentences.push(`The content engine runs education-first — ${givePct}% of posts give value freely — then converts the interested minority with a direct link or lead capture mechanic.`)
+      } else if (sellPct > 50) {
+        sentences.push(`This channel is used primarily for active promotion: ${sellPct}% of posts push an offer directly.`)
+      } else {
+        sentences.push(`Content is a mix of education (${givePct}%) and promotion (${sellPct}%).`)
+      }
+
+      // What the content is actually about (from style inference)
+      if (style) {
+        const secondClause = style.secondary ? `, occasionally mixing in content that ${style.secondary}` : ''
+        sentences.push(`The content typically ${style.primary}${secondClause}.`)
+      }
+
+      // Conversion mechanic — how readers are moved to act
+      if (ckPosts > 0) {
+        sentences.push(`When there is a CTA, the mechanic is comment-keyword automation: ${pct(ckPosts)} of posts ask followers to comment a trigger word and receive a link via DM — every commenter becomes a trackable lead.`)
+      } else if (lipPosts > 0) {
+        sentences.push(`${pct(lipPosts)} of posts include a direct link in the post — a frictionless path for the reader who is already interested.`)
+        if (licPosts > 0) sentences.push(`${pct(licPosts)} put the link in the first comment rather than the caption.`)
+      } else if (noCta >= total * 0.65) {
+        sentences.push(`${pct(noCta)} of posts carry no CTA at all — this is a long-game play: consistent free value today, audience to monetise later.`)
+      }
+
+      // Where they ultimately send people
+      if (dests.length >= 2) {
+        sentences.push(`When content does drive somewhere, the primary destinations are ${dests.slice(0, 2).map(([k]) => k).join(' and ')}.`)
+      } else if (dests.length === 1) {
+        sentences.push(`Content that includes a destination points toward ${dests[0][0]}.`)
+      }
+
+      seqPoints.push({ type: 'prose', text: sentences.join(' ') })
+
+    } else if (activeChans.length > 1) {
+      // Multi-channel: describe each channel's actual role from data
+      const style = describeContentStyle(posts)
+      const opener = style
+        ? `${name} posts across ${activeChans.length} channels, with content that primarily ${style.primary}.`
+        : `${name} posts across ${activeChans.length} channels.`
+      const sentences = [opener]
+
+      for (const ch of activeChans) {
+        const d = chAnalysis[ch]
+        const ckPosts  = d.posts.filter(p => p.cta_method === 'COMMENT-KEYWORD').length
+        const lipPosts = d.posts.filter(p => p.cta_method === 'LINK-IN-POST').length
+        const sellPct  = Math.round(d.sellPosts.length / d.n * 100)
+        const givePct  = Math.round(d.givePosts.length / d.n * 100)
+        const noCta    = d.posts.filter(p => !p.cta_method || p.cta_method === 'NONE').length
+        const chStyle  = describeContentStyle(d.posts)
+
+        let roleDesc
+        if (ckPosts > 0) {
+          roleDesc = `lead capture — ${ckPosts} posts use comment-keyword automation to turn engagement into DM leads`
+        } else if (lipPosts > d.n * 0.3) {
+          roleDesc = `direct conversion — ${Math.round(lipPosts/d.n*100)}% of posts carry a direct link`
+        } else if (sellPct > 50) {
+          roleDesc = `active selling (${sellPct}% of posts are promotional)`
+        } else if (givePct >= 70 || noCta >= d.n * 0.6) {
+          roleDesc = `audience building and awareness — ${givePct}% give-value, low-friction`
+        } else if (chStyle) {
+          roleDesc = `content distribution (${chStyle.primary})`
+        } else {
+          roleDesc = `content distribution (${givePct}% value, ${sellPct}% selling)`
+        }
+        sentences.push(`${CHANNEL_LABELS[ch]} is used for ${roleDesc}.`)
+      }
+
+      // Where multi-channel traffic ultimately flows
+      const allDests = detectDestinations(posts)
+      if (allDests.length >= 1) {
+        sentences.push(`Across all channels, the primary destination is ${allDests.slice(0,2).map(([k])=>k).join(' and ')}.`)
+      }
+
+      seqPoints.push({ type: 'prose', text: sentences.join(' ') })
+    }
   }
 
   for (const ch of activeChannels) {
@@ -228,18 +472,23 @@ function buildNarrative(analysis, posts, allPosts, name) {
     const isSellHeavy = d.sellPosts.length > d.givePosts.length
     seqPoints.push({
       type: 'channel', ch,
-      label: `${CHANNEL_LABELS[ch]} — ${CHAN_ROLE[ch] || ''}`,
-      desc: `${CHAN_HOW[ch] || ''}${isSellHeavy ? ' Sell-heavy this period.' : ''}`,
+      label: `${CHANNEL_LABELS[ch]} — ${isEden ? (EDEN_CHAN_ROLE[ch] || '') : buildChannelRole(ch, d)}`,
+      desc: isEden
+        ? `${EDEN_CHAN_HOW[ch] || ''}${isSellHeavy ? ' Sell-heavy this period.' : ''}`
+        : (buildChannelHow(ch, d) || ''),
     })
   }
 
+  // ── What's Working ────────────────────────────────────────────────────────────
   const wwPoints = []
+  const JUNK_HOOKS = new Set(['OTHER', 'False', '', 'NONE'])
   const hookCounts = {}, hookComments = {}
   for (const p of posts) {
-    if (!p.hook_type||p.hook_type==='False') continue
-    hookCounts[p.hook_type] = (hookCounts[p.hook_type]||0)+1
-    if (!hookComments[p.hook_type]) hookComments[p.hook_type]=[]
-    hookComments[p.hook_type].push(p.comments_n||0)
+    const h = p.hook_type
+    if (!h || JUNK_HOOKS.has(h)) continue
+    hookCounts[h] = (hookCounts[h]||0)+1
+    if (!hookComments[h]) hookComments[h]=[]
+    hookComments[h].push(p.comments_n||0)
   }
   const hookRanked = Object.entries(hookCounts).sort((a,b)=>b[1]-a[1])
   const topHook = hookRanked[0]
@@ -247,21 +496,24 @@ function buildNarrative(analysis, posts, allPosts, name) {
     .filter(([,v])=>v.length>=2)
     .map(([k,v])=>[k, Math.round(v.reduce((a,b)=>a+b,0)/v.length), v.length])
     .sort((a,b)=>b[1]-a[1])
-  const bestHook = hookPerfRanked[0]
+  const bestHook  = hookPerfRanked[0]
   const worstHook = hookPerfRanked[hookPerfRanked.length-1]
 
-  if (bestHook && topHook) {
+  if (topHook) {
     const topName  = HOOK_LABEL[topHook[0]]  || topHook[0].toLowerCase().replace(/-/g,' ')
-    const bestName = HOOK_LABEL[bestHook[0]] || bestHook[0].toLowerCase().replace(/-/g,' ')
-    const bestWhy  = HOOK_WHY[bestHook[0]]
     const topWhy   = HOOK_WHY[topHook[0]]
-    if (bestHook[0] === topHook[0]) {
-      wwPoints.push(`Most-used and best-performing hook: ${topName} — ${topWhy}. Averaging ${bestHook[1].toLocaleString()} comments across ${bestHook[2]} posts.`)
+    if (bestHook && bestHook[0] !== topHook[0]) {
+      const bestName = HOOK_LABEL[bestHook[0]] || bestHook[0].toLowerCase().replace(/-/g,' ')
+      const bestWhy  = HOOK_WHY[bestHook[0]]
+      wwPoints.push(`Most-used hook: ${topName}${topWhy ? ` — ${topWhy}` : ''}.\nBest-performing: ${bestName}${bestWhy ? ` — ${bestWhy}` : ''}. Averages ${bestHook[1].toLocaleString()} comments (${bestHook[2]} posts).`)
+    } else if (bestHook) {
+      wwPoints.push(`Most-used and best-performing hook: ${topName}${topWhy ? ` — ${topWhy}` : ''}. Averaging ${bestHook[1].toLocaleString()} comments across ${bestHook[2]} posts.`)
     } else {
-      wwPoints.push(`Most-used hook: ${topName} — ${topWhy}.\nBest-performing: ${bestName} — ${bestWhy}. Averages ${bestHook[1].toLocaleString()} comments (${bestHook[2]} posts).`)
+      wwPoints.push(`Most-used hook: ${topName}${topWhy ? ` — ${topWhy}` : ''}.`)
     }
-    if (worstHook && worstHook[0]!==bestHook[0] && worstHook[0]!==topHook[0]) {
-      wwPoints.push(`Weakest hook: ${HOOK_LABEL[worstHook[0]]||worstHook[0]} — in the mix but generating far less engagement than the others.`)
+    if (worstHook && worstHook[0] !== (bestHook?.[0]) && worstHook[0] !== topHook[0]) {
+      const worstName = HOOK_LABEL[worstHook[0]] || worstHook[0].toLowerCase().replace(/-/g,' ')
+      wwPoints.push(`Weakest hook: ${worstName} — in the mix but generating far less engagement than the others.`)
     }
   }
 
@@ -270,13 +522,25 @@ function buildNarrative(analysis, posts, allPosts, name) {
   const topCTA = Object.entries(ctaCounts).sort((a,b)=>b[1]-a[1])[0]
   if (topCTA) {
     const CTA_WHY = {
-      'COMMENT-KEYWORD':'people comment a keyword, get a link via automated DM — highest-volume lead capture mechanic',
-      'COMMENT-TO-RECEIVE':'people comment anything and receive the link manually — lower volume but every reply is a genuine hand-raise',
-      'LINK-IN-COMMENT':'link goes in the first comment, not the caption — Facebook buries posts with caption links',
-      'LINK-IN-POST':'direct link in the post — works on channels like WhatsApp and Email where the algorithm doesn\'t penalise it',
+      'COMMENT-KEYWORD':    'people comment a keyword, get a link via automated DM — highest-volume lead capture mechanic',
+      'COMMENT-TO-RECEIVE': 'people comment anything and receive the link manually — lower volume but every reply is a genuine hand-raise',
+      'LINK-IN-COMMENT':    'link goes in the first comment, not the caption — avoids algorithm penalties for caption links',
+      'LINK-IN-POST':       'direct link in the post',
       'ENGAGEMENT-QUESTION':'question with no link or offer — pure audience activation',
+      'WHATSAPP-JOIN':      'drives people to join a free WhatsApp group — warms them before any paid offer',
     }
-    wwPoints.push(`Top CTA mechanic (${topCTA[1]} of ${total} posts): ${CTA_WHY[topCTA[0]] || topCTA[0]}.`)
+    wwPoints.push(`Top CTA mechanic (${Math.round(topCTA[1]/total*100)}% of posts): ${CTA_WHY[topCTA[0]] || topCTA[0]}.`)
+  }
+
+  // Primary destination insight — use consistent % format
+  const smartDests = detectDestinations(posts)
+  if (smartDests.length) {
+    const topD = smartDests[0], secD = smartDests[1]
+    const topShare = Math.round(topD[1] / total * 100)
+    const destLine = secD
+      ? `Primary destinations: ${topD[0]} (${topShare}% of posts) and ${secD[0]} (${Math.round(secD[1]/total*100)}%).`
+      : `${topShare}% of posts ultimately drive to: ${topD[0]}.`
+    wwPoints.push(destLine)
   }
 
   return [
@@ -399,7 +663,7 @@ export default function ViewExecutiveSummary({ posts, allPosts, paidAds, competi
   )
 
   const { campaigns, chAnalysis, sellPosts, givePosts, isSelling, topPost } = analysis
-  const narrative = buildNarrative(analysis, posts, allPosts, name)
+  const narrative = buildNarrative(analysis, posts, allPosts, name, isEden)
 
   const CTA_PLAIN = {
     'COMMENT-KEYWORD':    'asks people to comment a keyword → sends them a link via automated DM',
@@ -500,30 +764,17 @@ export default function ViewExecutiveSummary({ posts, allPosts, paidAds, competi
                 const color = CHANNEL_META[ch]?.color || '#666'
                 const isSellHeavy = d.sellPosts.length > d.givePosts.length
                 const phaseColor = isSellHeavy ? 'var(--no)' : 'var(--ok)'
-                const ctaExplain = d.topCTA && d.topCTA !== 'NONE' && d.topCTA !== 'False' ? CTA_PLAIN[d.topCTA] : null
-                const chanHow = CHAN_HOW[ch]
-                const chanWhen = ch === 'instagram' ? 'Used throughout campaigns to collect leads.'
-                  : ch === 'linkedin' ? 'Always fires late in a campaign, after social proof from other channels exists.'
-                  : ch === 'whatsapp' ? 'Always fires first — 24-48 hours before the public launch.'
-                  : ch === 'email' ? 'Fires during or after campaigns.'
-                  : ch === 'fb_group' ? 'Usually the first or second channel to fire.'
-                  : ch === 'fb_personal' ? 'Fires on campaign launch day alongside other channels.'
-                  : null
+                const chanRole = isEden ? EDEN_CHAN_ROLE[ch] : buildChannelRole(ch, d)
+                const chanHow  = isEden ? EDEN_CHAN_HOW[ch] : buildChannelHow(ch, d)
 
                 return (
                   <div key={ch} style={{ background: 'var(--s2)', borderRadius: 8, border: '1px solid var(--bd)', borderLeft: `3px solid ${color}`, padding: '12px 14px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5, flexWrap: 'wrap' }}>
                       <span style={{ fontSize: 13, fontWeight: 700, color }}>{CHANNEL_LABELS[ch]}</span>
-                      {CHAN_ROLE[ch] && <span style={{ fontSize: 11, color: 'var(--ts)', fontStyle: 'italic' }}>— {CHAN_ROLE[ch]}</span>}
+                      {chanRole && <span style={{ fontSize: 11, color: 'var(--ts)', fontStyle: 'italic' }}>— {chanRole}</span>}
                       <span style={{ fontSize: 10, fontFamily: 'var(--mono)', fontWeight: 700, padding: '1px 6px', borderRadius: 3, background: phaseColor+'22', color: phaseColor, border: `1px solid ${phaseColor}33`, marginLeft: 'auto' }}>
                         {isSellHeavy ? 'selling' : 'value'}
                       </span>
-                    </div>
-                    <div style={{ fontSize: 12, color: 'var(--tp)', lineHeight: 1.65, marginBottom: 6 }}>
-                      {ctaExplain
-                        ? <>{d.topCTACount} of {d.n} posts {ctaExplain}. {chanWhen && <span style={{ color: 'var(--ts)' }}>{chanWhen}</span>}</>
-                        : <span style={{ color: 'var(--ts)' }}>All {d.n} posts have no CTA — awareness only. {chanWhen}</span>
-                      }
                     </div>
                     {chanHow && (
                       <div style={{ fontSize: 12, color: 'var(--ts)', lineHeight: 1.6, padding: '8px 10px', background: 'var(--s3)', borderRadius: 5, marginBottom: 8, borderLeft: `2px solid ${color}44` }}>
