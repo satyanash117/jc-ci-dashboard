@@ -68,6 +68,51 @@
         "youtube"
       ],
       "postCount": 1
+    },
+    {
+      "slug": "the_history_guy",
+      "name": "The History Guy",
+      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 4
+    },
+    {
+      "slug": "the_armchair_historian",
+      "name": "The Armchair Historian",
+      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 1
+    },
+    {
+      "slug": "tasting_history",
+      "name": "Tasting History",
+      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 3
+    },
+    {
+      "slug": "matt_wolfe",
+      "name": "Matt Wolfe",
+      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 9
+    },
+    {
+      "slug": "skill_leap_ai",
+      "name": "Skill Leap AI",
+      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 1
     }
   ]
 }
