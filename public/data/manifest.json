@@ -72,11 +72,11 @@
     {
       "slug": "the_history_guy",
       "name": "The History Guy",
-      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "lastUpdated": "2026-05-21T06:45:53.707Z",
       "platforms": [
         "youtube"
       ],
-      "postCount": 4
+      "postCount": 6
     },
     {
       "slug": "the_armchair_historian",
@@ -90,25 +90,34 @@
     {
       "slug": "tasting_history",
       "name": "Tasting History",
-      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "lastUpdated": "2026-05-21T06:45:53.707Z",
       "platforms": [
         "youtube"
       ],
-      "postCount": 3
+      "postCount": 5
     },
     {
       "slug": "matt_wolfe",
       "name": "Matt Wolfe",
-      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "lastUpdated": "2026-05-21T06:45:53.707Z",
       "platforms": [
         "youtube"
       ],
-      "postCount": 9
+      "postCount": 11
     },
     {
       "slug": "skill_leap_ai",
       "name": "Skill Leap AI",
-      "lastUpdated": "2026-05-19T05:24:16.248Z",
+      "lastUpdated": "2026-05-21T06:45:53.707Z",
+      "platforms": [
+        "youtube"
+      ],
+      "postCount": 2
+    },
+    {
+      "slug": "liam_ottley",
+      "name": "Liam Ottley",
+      "lastUpdated": "2026-05-21T06:45:53.707Z",
       "platforms": [
         "youtube"
       ],
